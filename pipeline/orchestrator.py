@@ -34,18 +34,18 @@ class Orchestrator:
 
     def run(self) -> dict:
         run_id = datetime.now().strftime("%Y%m%d_%H%M%S")
-        state = self.config.active_state
+        state = self.config.state_config.state_name
 
         self.logger.info(f"{'='*50}")
-        self.logger.info(f"Pipeline run {run_id} | State: {state.upper()}")
+        self.logger.info(f"Pipeline run {run_id} | State: {state}")
         self.logger.info(f"{'='*50}")
 
         # Phase 0: Firecrawl — scrape critical data websites
         self.logger.info("--- Phase 0: Firecrawl ---")
         scraped_bundle = self.firecrawl_agent.run(None)
 
-        # Phase 1: Research — Claude + Tavily MCP
-        self.logger.info("--- Phase 1: Research (Tavily MCP) ---")
+        # Phase 1: Research — Perplexity Sonar API
+        self.logger.info("--- Phase 1: Research (Perplexity) ---")
         research_bundle = self.research_agent.run(None)
 
         # Phase 2: Analysis — combine + score + select
