@@ -19,8 +19,8 @@ class EditorialAgent(BaseAgent):
     Returns a list of ready-to-send Telegram message strings.
     """
 
-    def __init__(self, config) -> None:
-        super().__init__(config)
+    def __init__(self, config, cost_tracker=None) -> None:
+        super().__init__(config, cost_tracker)
         self.client = anthropic.Anthropic(api_key=config.anthropic_api_key)
         self.model = config.claude_model
 
@@ -45,6 +45,11 @@ class EditorialAgent(BaseAgent):
             messages=[{"role": "user", "content": user_prompt}],
         )
 
+        if self.cost_tracker:
+            self.cost_tracker.record_claude(
+                "editorial_agent", self.model,
+                response.usage.input_tokens, response.usage.output_tokens,
+            )
         reviewed_text = response.content[0].text
         self.logger.info(f"Editorial response: {len(reviewed_text)} chars")
 

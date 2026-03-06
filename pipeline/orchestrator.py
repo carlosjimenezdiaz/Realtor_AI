@@ -3,6 +3,7 @@ import logging
 from datetime import datetime
 
 from config.settings import Config
+from utils.cost_tracker import CostTracker
 from agents.firecrawl_agent import FirecrawlAgent
 from agents.research_agent import ResearchAgent
 from agents.analysis_agent import AnalysisAgent
@@ -25,11 +26,12 @@ class Orchestrator:
         self.dry_run = dry_run  # If True, skip Telegram delivery
         self.logger = logging.getLogger("Orchestrator")
 
-        self.firecrawl_agent = FirecrawlAgent(config)
-        self.research_agent = ResearchAgent(config)
-        self.analysis_agent = AnalysisAgent(config)
-        self.writing_agent = WritingAgent(config)
-        self.editorial_agent = EditorialAgent(config)
+        self.cost_tracker = CostTracker()
+        self.firecrawl_agent = FirecrawlAgent(config, self.cost_tracker)
+        self.research_agent = ResearchAgent(config, self.cost_tracker)
+        self.analysis_agent = AnalysisAgent(config, self.cost_tracker)
+        self.writing_agent = WritingAgent(config, self.cost_tracker)
+        self.editorial_agent = EditorialAgent(config, self.cost_tracker)
         self.delivery_agent = DeliveryAgent(config)
 
     def run(self) -> dict:
@@ -74,6 +76,12 @@ class Orchestrator:
             self.logger.info("--- Phase 5: Delivery ---")
             delivery_result = self.delivery_agent.run(final_messages)
 
+        log_file = self.cost_tracker.save(run_id)
+        self.logger.info(
+            f"Cost tracking saved: {log_file} | "
+            f"Total cost: ${self.cost_tracker.total_usd():.4f}"
+        )
+
         summary = {
             "run_id": run_id,
             "state": state,
@@ -83,6 +91,7 @@ class Orchestrator:
             "messages_sent": delivery_result["sent_count"],
             "messages_failed": delivery_result.get("failed_count", 0),
             "dry_run": self.dry_run,
+            "total_cost_usd": self.cost_tracker.total_usd(),
         }
 
         self.logger.info(f"{'='*50}")

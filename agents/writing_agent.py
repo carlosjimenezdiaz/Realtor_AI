@@ -22,8 +22,8 @@ class WritingAgent(BaseAgent):
     The report is split into named sections using markers.
     """
 
-    def __init__(self, config) -> None:
-        super().__init__(config)
+    def __init__(self, config, cost_tracker=None) -> None:
+        super().__init__(config, cost_tracker)
         self.client = anthropic.Anthropic(api_key=config.anthropic_api_key)
         self.model = config.claude_model
         self.state_config = config.state_config
@@ -56,6 +56,11 @@ class WritingAgent(BaseAgent):
             messages=[{"role": "user", "content": user_prompt}],
         )
 
+        if self.cost_tracker:
+            self.cost_tracker.record_claude(
+                "writing_agent", self.model,
+                response.usage.input_tokens, response.usage.output_tokens,
+            )
         raw_text = response.content[0].text
         self.logger.info(f"Writing response: {len(raw_text)} chars")
 

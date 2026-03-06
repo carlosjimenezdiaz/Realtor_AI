@@ -27,8 +27,8 @@ class FirecrawlAgent(BaseAgent):
     native tool. Falls back to the Python SDK if MCP is unavailable.
     """
 
-    def __init__(self, config) -> None:
-        super().__init__(config)
+    def __init__(self, config, cost_tracker=None) -> None:
+        super().__init__(config, cost_tracker)
         self.client = anthropic.Anthropic(api_key=config.anthropic_api_key)
         self.firecrawl_api_key = config.firecrawl_api_key
         self.model = config.claude_model
@@ -72,6 +72,13 @@ class FirecrawlAgent(BaseAgent):
             messages=[{"role": "user", "content": user_prompt}],
             betas=["mcp-client-2025-04-04"],
         )
+
+        if self.cost_tracker:
+            self.cost_tracker.record_claude(
+                "firecrawl_agent", self.model,
+                response.usage.input_tokens, response.usage.output_tokens,
+            )
+            self.cost_tracker.record_firecrawl_pages(len(self.urls))
 
         full_text = "".join(
             block.text for block in response.content if hasattr(block, "text")
@@ -180,6 +187,8 @@ class FirecrawlAgent(BaseAgent):
                     ))
 
         bundle.pages = pages
+        if self.cost_tracker:
+            self.cost_tracker.record_firecrawl_pages(len(self.urls))
         return bundle
 
     def _sdk_scrape_url(self, app, entry: dict) -> ScrapedPage:

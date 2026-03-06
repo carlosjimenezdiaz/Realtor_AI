@@ -21,8 +21,9 @@ class BaseAgent(ABC, Generic[InputT, OutputT]):
     - Consistent error propagation
     """
 
-    def __init__(self, config) -> None:
+    def __init__(self, config, cost_tracker=None) -> None:
         self.config = config
+        self.cost_tracker = cost_tracker
         self.logger = logging.getLogger(self.__class__.__name__)
 
     @abstractmethod

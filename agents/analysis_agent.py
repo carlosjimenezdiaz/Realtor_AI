@@ -22,8 +22,8 @@ class AnalysisAgent(BaseAgent):
     Output is a clean AnalysisBundle ready for the writing agent.
     """
 
-    def __init__(self, config) -> None:
-        super().__init__(config)
+    def __init__(self, config, cost_tracker=None) -> None:
+        super().__init__(config, cost_tracker)
         self.client = anthropic.Anthropic(api_key=config.anthropic_api_key)
         self.model = config.claude_model
         self.state_config = config.state_config
@@ -68,6 +68,11 @@ class AnalysisAgent(BaseAgent):
             messages=[{"role": "user", "content": user_prompt}],
         )
 
+        if self.cost_tracker:
+            self.cost_tracker.record_claude(
+                "analysis_agent", self.model,
+                response.usage.input_tokens, response.usage.output_tokens,
+            )
         raw_text = response.content[0].text.strip()
         return self._parse_response(raw_text, state_name)
 

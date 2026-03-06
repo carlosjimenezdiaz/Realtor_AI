@@ -1,0 +1,47 @@
+[
+  {
+    "date": "2026-03-06",
+    "run_id": "20260306_133347",
+    "claude": {
+      "by_agent": {
+        "firecrawl_agent": {
+          "model": "claude-sonnet-4-6",
+          "input_tokens": 73508,
+          "output_tokens": 4113,
+          "cost_usd": 0.282219
+        },
+        "analysis_agent": {
+          "model": "claude-sonnet-4-6",
+          "input_tokens": 14516,
+          "output_tokens": 4918,
+          "cost_usd": 0.117318
+        },
+        "writing_agent": {
+          "model": "claude-sonnet-4-6",
+          "input_tokens": 7363,
+          "output_tokens": 7022,
+          "cost_usd": 0.127419
+        },
+        "editorial_agent": {
+          "model": "claude-sonnet-4-6",
+          "input_tokens": 7463,
+          "output_tokens": 7041,
+          "cost_usd": 0.128004
+        }
+      },
+      "total_cost_usd": 0.65496
+    },
+    "perplexity": {
+      "model": "sonar-pro",
+      "total_requests": 26,
+      "total_input_tokens": 689,
+      "total_output_tokens": 13171,
+      "cost_usd": 0.329632
+    },
+    "firecrawl": {
+      "pages_scraped": 6,
+      "cost_usd": 0.006
+    },
+    "total_cost_usd": 0.990592
+  }
+]

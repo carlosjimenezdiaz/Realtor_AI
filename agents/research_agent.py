@@ -23,8 +23,8 @@ class ResearchAgent(BaseAgent):
     analysis. Deduplication is cross-day persistent via ArticleDeduplicator.
     """
 
-    def __init__(self, config) -> None:
-        super().__init__(config)
+    def __init__(self, config, cost_tracker=None) -> None:
+        super().__init__(config, cost_tracker)
         self.perplexity_api_key = config.perplexity_api_key
         self.deduplicator = ArticleDeduplicator(
             history_file=config.dedup_history_file,
@@ -107,6 +107,13 @@ class ResearchAgent(BaseAgent):
         data = response.json()
 
         answer_text = data["choices"][0]["message"]["content"]
+        usage = data.get("usage", {})
+        if self.cost_tracker and usage:
+            self.cost_tracker.record_perplexity(
+                PERPLEXITY_MODEL,
+                input_tokens=usage.get("prompt_tokens", 0),
+                output_tokens=usage.get("completion_tokens", 0),
+            )
         # Perplexity returns search_results with title, url, date, snippet
         search_results: list[dict] = data.get("search_results", [])
 
