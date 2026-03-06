@@ -1,0 +1,424 @@
+{"ts": "2026-03-02T00:33:54.521321+00:00", "level": "INFO", "logger": "main", "msg": "Starting pipeline in PRODUCTION mode"}
+{"ts": "2026-03-02T00:33:54.549655+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-02T00:33:54.549690+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "Pipeline run 20260301_193354 | State: FLORIDA"}
+{"ts": "2026-03-02T00:33:54.549713+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-02T00:33:54.549731+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 0: Firecrawl ---"}
+{"ts": "2026-03-02T00:33:54.549752+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-02T00:33:54.549772+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Firecrawl MCP: scraping 5 URLs"}
+{"ts": "2026-03-02T00:35:03.291795+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages?beta=true \"HTTP/1.1 200 OK\""}
+{"ts": "2026-03-02T00:35:03.325815+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Firecrawl MCP response: 10415 chars"}
+{"ts": "2026-03-02T00:35:03.326251+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Firecrawl MCP complete: 5 ok, 0 failed"}
+{"ts": "2026-03-02T00:35:03.326320+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Completed in 68.78s"}
+{"ts": "2026-03-02T00:35:03.326359+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 1: Research (Tavily MCP) ---"}
+{"ts": "2026-03-02T00:35:03.326404+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-02T00:35:03.326485+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Tavily MCP research: Florida (13 categories)"}
+{"ts": "2026-03-02T00:40:55.592029+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages?beta=true \"HTTP/1.1 400 Bad Request\""}
+{"ts": "2026-03-02T00:40:55.593966+00:00", "level": "WARNING", "logger": "ResearchAgent", "msg": "Tavily MCP failed (Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Connection to MCP server timed out. The server may be unavailable or unresponsive.'}, 'request_id': 'req_011CYdKG9DqJiCXcUnaUhFMT'}). Falling back to direct Tavily SDK."}
+{"ts": "2026-03-02T00:40:55.594106+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Tavily SDK research: Florida (13 categories)"}
+{"ts": "2026-03-02T00:40:59.022914+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida HOA insurance property tax changes 2026...': 5 results"}
+{"ts": "2026-03-02T00:40:59.057361+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida housing inventory levels prices 2026...': 5 results"}
+{"ts": "2026-03-02T00:40:59.120253+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida housing inventory levels prices 2026...': 5 results"}
+{"ts": "2026-03-02T00:40:59.224518+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida real estate legislation new laws 2026...': 5 results"}
+{"ts": "2026-03-02T00:40:59.290297+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida housing inventory levels prices 2026...': 5 results"}
+{"ts": "2026-03-02T00:40:59.562461+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Fed interest rate decision housing market Florida ...': 5 results"}
+{"ts": "2026-03-02T00:41:00.106665+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida housing inventory levels prices 2026...': 5 results"}
+{"ts": "2026-03-02T00:41:01.107145+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida median home prices days on market statisti...': 5 results"}
+{"ts": "2026-03-02T00:41:01.170951+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida housing inventory levels prices 2026...': 5 results"}
+{"ts": "2026-03-02T00:41:01.321578+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida mortgage rates today 2026 30-year fixed...': 5 results"}
+{"ts": "2026-03-02T00:41:01.370640+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida median home prices days on market statisti...': 5 results"}
+{"ts": "2026-03-02T00:41:01.559599+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida median home prices days on market statisti...': 5 results"}
+{"ts": "2026-03-02T00:41:01.846481+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida median home prices days on market statisti...': 5 results"}
+{"ts": "2026-03-02T00:41:02.262310+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida median home prices days on market statisti...': 5 results"}
+{"ts": "2026-03-02T00:41:03.942972+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'international investors Miami real estate Colombia...': 5 results"}
+{"ts": "2026-03-02T00:41:04.045132+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'South Florida luxury real estate $5M+ market 2026...': 5 results"}
+{"ts": "2026-03-02T00:41:04.045263+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Miami ultra-luxury properties sales 2026...': 5 results"}
+{"ts": "2026-03-02T00:41:04.111639+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida median home prices days on market statisti...': 5 results"}
+{"ts": "2026-03-02T00:41:04.111740+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida housing inventory levels prices 2026...': 5 results"}
+{"ts": "2026-03-02T00:41:04.260534+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Latin American buyers Florida real estate 2026...': 5 results"}
+{"ts": "2026-03-02T00:41:04.494729+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida new construction housing starts 2026...': 5 results"}
+{"ts": "2026-03-02T00:41:06.587454+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida new development pre-construction 2026...': 5 results"}
+{"ts": "2026-03-02T00:41:06.649090+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'cryptocurrency payment real estate property Florid...': 5 results"}
+{"ts": "2026-03-02T00:41:06.796884+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Bitcoin crypto buyers real estate Florida Miami 20...': 5 results"}
+{"ts": "2026-03-02T00:41:07.252629+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida economy housing market outlook 2026...': 5 results"}
+{"ts": "2026-03-02T00:41:07.612885+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida real estate investment trends 2026...': 5 results"}
+{"ts": "2026-03-02T00:41:07.750461+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "SDK: 130 raw → 62 unique articles"}
+{"ts": "2026-03-02T00:41:07.750655+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Completed in 364.42s"}
+{"ts": "2026-03-02T00:41:07.750681+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 2: Analysis ---"}
+{"ts": "2026-03-02T00:41:07.750706+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-02T00:41:07.750833+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Analyzing 40 articles (of 62) + 5 scraped pages"}
+{"ts": "2026-03-02T00:42:36.035204+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages \"HTTP/1.1 200 OK\""}
+{"ts": "2026-03-02T00:42:36.062752+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Analysis complete: 12 articles selected, 30yr rate: 5.98%"}
+{"ts": "2026-03-02T00:42:36.062875+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Completed in 88.31s"}
+{"ts": "2026-03-02T00:42:36.062931+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 3: Writing ---"}
+{"ts": "2026-03-02T00:42:36.062985+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-02T00:42:36.063355+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Writing newsletter with 12 stories"}
+{"ts": "2026-03-02T00:45:16.535942+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages \"HTTP/1.1 200 OK\""}
+{"ts": "2026-03-02T00:45:16.540036+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Writing response: 24294 chars"}
+{"ts": "2026-03-02T00:45:16.540468+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Parsed sections: ['HEADER', 'RESUMEN EJECUTIVO', 'HISTORIA_1', 'MERCADO', 'INVERSION_LATINA', 'ESTRATEGIAS', 'RADAR', 'BTC_CRIPTO', 'FOOTER']"}
+{"ts": "2026-03-02T00:45:16.540616+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Completed in 160.48s"}
+{"ts": "2026-03-02T00:45:16.540682+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 4: Editorial ---"}
+{"ts": "2026-03-02T00:45:16.540757+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-02T00:45:16.540858+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Editorial review: 24303 chars, 1 stories"}
+{"ts": "2026-03-02T00:47:58.477815+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages \"HTTP/1.1 200 OK\""}
+{"ts": "2026-03-02T00:47:58.481389+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Editorial response: 24469 chars"}
+{"ts": "2026-03-02T00:47:58.481761+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Editorial complete: 17 Telegram messages"}
+{"ts": "2026-03-02T00:47:58.481856+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Completed in 161.94s"}
+{"ts": "2026-03-02T00:47:58.481924+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 5: Delivery ---"}
+{"ts": "2026-03-02T00:47:58.482000+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-02T00:47:58.482059+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Sending 17 messages to Telegram"}
+{"ts": "2026-03-02T00:47:58.482117+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 1/17 (179 chars)"}
+{"ts": "2026-03-02T00:48:00.624980+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 2/17 (812 chars)"}
+{"ts": "2026-03-02T00:48:02.686457+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 3/17 (1653 chars)"}
+{"ts": "2026-03-02T00:48:04.625248+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 4/17 (1726 chars)"}
+{"ts": "2026-03-02T00:48:06.724703+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 5/17 (1704 chars)"}
+{"ts": "2026-03-02T00:48:08.668123+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 6/17 (1591 chars)"}
+{"ts": "2026-03-02T00:48:10.697184+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 7/17 (1612 chars)"}
+{"ts": "2026-03-02T00:48:12.604017+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 8/17 (1635 chars)"}
+{"ts": "2026-03-02T00:48:14.568444+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 9/17 (1619 chars)"}
+{"ts": "2026-03-02T00:48:17.479003+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 10/17 (1190 chars)"}
+{"ts": "2026-03-02T00:48:19.415461+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 11/17 (1368 chars)"}
+{"ts": "2026-03-02T00:48:21.381559+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 12/17 (1841 chars)"}
+{"ts": "2026-03-02T00:48:25.031746+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 13/17 (2358 chars)"}
+{"ts": "2026-03-02T00:48:27.121627+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 14/17 (1451 chars)"}
+{"ts": "2026-03-02T00:48:29.511067+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 15/17 (1221 chars)"}
+{"ts": "2026-03-02T00:48:31.462283+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 16/17 (1702 chars)"}
+{"ts": "2026-03-02T00:48:33.516944+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 17/17 (202 chars)"}
+{"ts": "2026-03-02T00:48:35.433480+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Pinned message 37"}
+{"ts": "2026-03-02T00:48:35.433708+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Delivery complete: 17 sent, 0 failed"}
+{"ts": "2026-03-02T00:48:35.433826+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Completed in 36.95s"}
+{"ts": "2026-03-02T00:48:35.433955+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-02T00:48:35.434040+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "Run complete: {'run_id': '20260301_193354', 'state': 'florida', 'scraped_pages': 5, 'articles_found': 62, 'articles_selected': 12, 'messages_sent': 17, 'messages_failed': 0, 'dry_run': False}"}
+{"ts": "2026-03-02T00:48:35.434109+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-02T00:48:35.434647+00:00", "level": "INFO", "logger": "main", "msg": "Pipeline finished successfully: {'run_id': '20260301_193354', 'state': 'florida', 'scraped_pages': 5, 'articles_found': 62, 'articles_selected': 12, 'messages_sent': 17, 'messages_failed': 0, 'dry_run': False}"}
+{"ts": "2026-03-02T00:52:19.352413+00:00", "level": "INFO", "logger": "main", "msg": "Starting pipeline in PRODUCTION mode"}
+{"ts": "2026-03-02T00:52:19.379750+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-02T00:52:19.379787+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "Pipeline run 20260301_195219 | State: FLORIDA"}
+{"ts": "2026-03-02T00:52:19.379819+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-02T00:52:19.379839+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 0: Firecrawl ---"}
+{"ts": "2026-03-02T00:52:19.379860+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-02T00:52:19.379880+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Firecrawl MCP: scraping 5 URLs"}
+{"ts": "2026-03-02T00:57:25.201332+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages?beta=true \"HTTP/1.1 400 Bad Request\""}
+{"ts": "2026-03-02T00:57:25.205332+00:00", "level": "WARNING", "logger": "FirecrawlAgent", "msg": "Firecrawl MCP failed (Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Connection to MCP server timed out. The server may be unavailable or unresponsive.'}, 'request_id': 'req_011CYdLaWyQDP6JKZBTydptu'}). Falling back to SDK."}
+{"ts": "2026-03-02T00:57:26.210153+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "SDK scraped 'Freddie Mac PMMS': 8000 chars"}
+{"ts": "2026-03-02T00:57:26.213814+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "SDK scraped 'Florida Realtors': 1824 chars"}
+{"ts": "2026-03-02T00:57:26.727168+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "SDK scraped 'Zillow Research': 4003 chars"}
+{"ts": "2026-03-02T00:57:27.098906+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "SDK scraped 'NAR Research': 8000 chars"}
+{"ts": "2026-03-02T00:57:28.311125+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "SDK scraped 'Redfin Data Center': 8000 chars"}
+{"ts": "2026-03-02T00:57:28.311733+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Completed in 308.93s"}
+{"ts": "2026-03-02T00:57:28.311872+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 1: Research (Tavily MCP) ---"}
+{"ts": "2026-03-02T00:57:28.311998+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-02T00:57:28.312151+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Tavily MCP research: Florida (13 categories)"}
+{"ts": "2026-03-02T01:01:03.258111+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages?beta=true \"HTTP/1.1 200 OK\""}
+{"ts": "2026-03-02T01:01:03.329758+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "MCP research response: 22209 chars"}
+{"ts": "2026-03-02T01:01:03.351920+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "MCP: 20 raw → 18 unique articles"}
+{"ts": "2026-03-02T01:01:03.352004+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Completed in 215.04s"}
+{"ts": "2026-03-02T01:01:03.352039+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 2: Analysis ---"}
+{"ts": "2026-03-02T01:01:03.352073+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-02T01:01:03.352204+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Analyzing 18 articles (of 18) + 5 scraped pages"}
+{"ts": "2026-03-02T01:03:07.029549+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages \"HTTP/1.1 200 OK\""}
+{"ts": "2026-03-02T01:03:07.060681+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Analysis complete: 12 articles selected, 30yr rate: 5.98% (Freddie Mac PMMS, 26 feb 2026) / 6.04% (Bankrate, 27 feb 2026)"}
+{"ts": "2026-03-02T01:03:07.060836+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Completed in 123.71s"}
+{"ts": "2026-03-02T01:03:07.060906+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 3: Writing ---"}
+{"ts": "2026-03-02T01:03:07.060970+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-02T01:03:07.061319+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Writing newsletter with 12 stories"}
+{"ts": "2026-03-02T01:05:46.527447+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages \"HTTP/1.1 200 OK\""}
+{"ts": "2026-03-02T01:05:46.531021+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Writing response: 23678 chars"}
+{"ts": "2026-03-02T01:05:46.531506+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Parsed sections: ['HEADER', 'RESUMEN EJECUTIVO', 'HISTORIA_1', 'HISTORIA_2', 'HISTORIA_3', 'HISTORIA_4', 'HISTORIA_5', 'HISTORIA_6', 'MERCADO', 'INVERSION_LATINA', 'ESTRATEGIAS', 'RADAR', 'BTC_CRIPTO', 'FOOTER']"}
+{"ts": "2026-03-02T01:05:46.531716+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Completed in 159.47s"}
+{"ts": "2026-03-02T01:05:46.531793+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 4: Editorial ---"}
+{"ts": "2026-03-02T01:05:46.531895+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-02T01:05:46.532005+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Editorial review: 23692 chars, 6 stories"}
+{"ts": "2026-03-02T01:08:31.358549+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages \"HTTP/1.1 200 OK\""}
+{"ts": "2026-03-02T01:08:31.363125+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Editorial response: 23994 chars"}
+{"ts": "2026-03-02T01:08:31.363554+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Editorial complete: 16 Telegram messages"}
+{"ts": "2026-03-02T01:08:31.363656+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Completed in 164.83s"}
+{"ts": "2026-03-02T01:08:31.363720+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 5: Delivery ---"}
+{"ts": "2026-03-02T01:08:31.363792+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-02T01:08:31.363839+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Sending 16 messages to Telegram"}
+{"ts": "2026-03-02T01:08:31.363888+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 1/16 (179 chars)"}
+{"ts": "2026-03-02T01:08:33.296245+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 2/16 (936 chars)"}
+{"ts": "2026-03-02T01:08:35.391870+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 3/16 (1828 chars)"}
+{"ts": "2026-03-02T01:08:37.364717+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 4/16 (2001 chars)"}
+{"ts": "2026-03-02T01:08:39.322807+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 5/16 (1840 chars)"}
+{"ts": "2026-03-02T01:08:41.276470+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 6/16 (1894 chars)"}
+{"ts": "2026-03-02T01:08:43.270270+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 7/16 (1933 chars)"}
+{"ts": "2026-03-02T01:08:45.219777+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 8/16 (2083 chars)"}
+{"ts": "2026-03-02T01:08:47.245177+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 9/16 (1276 chars)"}
+{"ts": "2026-03-02T01:08:49.150750+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 10/16 (1756 chars)"}
+{"ts": "2026-03-02T01:08:51.128185+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 11/16 (1090 chars)"}
+{"ts": "2026-03-02T01:08:53.099575+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 12/16 (2005 chars)"}
+{"ts": "2026-03-02T01:08:55.061520+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 13/16 (1658 chars)"}
+{"ts": "2026-03-02T01:08:57.018386+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 14/16 (1611 chars)"}
+{"ts": "2026-03-02T01:08:58.974237+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 15/16 (1129 chars)"}
+{"ts": "2026-03-02T01:09:00.994415+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 16/16 (202 chars)"}
+{"ts": "2026-03-02T01:09:02.403586+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Pinned message 58"}
+{"ts": "2026-03-02T01:09:02.403787+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Delivery complete: 16 sent, 0 failed"}
+{"ts": "2026-03-02T01:09:02.403908+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Completed in 31.04s"}
+{"ts": "2026-03-02T01:09:02.404075+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-02T01:09:02.404175+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "Run complete: {'run_id': '20260301_195219', 'state': 'florida', 'scraped_pages': 5, 'articles_found': 18, 'articles_selected': 12, 'messages_sent': 16, 'messages_failed': 0, 'dry_run': False}"}
+{"ts": "2026-03-02T01:09:02.404240+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-02T01:09:02.404569+00:00", "level": "INFO", "logger": "main", "msg": "Pipeline finished successfully: {'run_id': '20260301_195219', 'state': 'florida', 'scraped_pages': 5, 'articles_found': 18, 'articles_selected': 12, 'messages_sent': 16, 'messages_failed': 0, 'dry_run': False}"}
+{"ts": "2026-03-02T02:19:26.009981+00:00", "level": "INFO", "logger": "apscheduler.scheduler", "msg": "Adding job tentatively -- it will be properly scheduled when the scheduler starts"}
+{"ts": "2026-03-02T02:19:47.754294+00:00", "level": "INFO", "logger": "apscheduler.scheduler", "msg": "Adding job tentatively -- it will be properly scheduled when the scheduler starts"}
+{"ts": "2026-03-02T02:22:00.903466+00:00", "level": "INFO", "logger": "apscheduler.scheduler", "msg": "Adding job tentatively -- it will be properly scheduled when the scheduler starts"}
+{"ts": "2026-03-02T02:22:00.903957+00:00", "level": "INFO", "logger": "scheduler", "msg": "Scheduler started for Florida Realty Intel\n  Schedule: Mon-Fri at 08:00 America/New_York\n  Waiting for next scheduled run..."}
+{"ts": "2026-03-02T02:22:00.904084+00:00", "level": "INFO", "logger": "apscheduler.scheduler", "msg": "Added job \"Florida Realty Intel Daily Report\" to job store \"default\""}
+{"ts": "2026-03-02T02:22:00.904117+00:00", "level": "INFO", "logger": "apscheduler.scheduler", "msg": "Scheduler started"}
+{"ts": "2026-03-02T13:00:00.218748+00:00", "level": "INFO", "logger": "apscheduler.executors.default", "msg": "Running job \"Florida Realty Intel Daily Report (trigger: cron[day_of_week='mon-fri', hour='8', minute='0'], next run at: 2026-03-03 08:00:00 EST)\" (scheduled at 2026-03-02 08:00:00-05:00)"}
+{"ts": "2026-03-02T13:00:00.219375+00:00", "level": "INFO", "logger": "scheduler.job", "msg": "Scheduled pipeline starting..."}
+{"ts": "2026-03-02T13:00:00.263199+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-02T13:00:00.263255+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "Pipeline run 20260302_080000 | State: FLORIDA"}
+{"ts": "2026-03-02T13:00:00.263281+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-02T13:00:00.263302+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 0: Firecrawl ---"}
+{"ts": "2026-03-02T13:00:00.263338+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-02T13:00:00.263364+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Firecrawl MCP: scraping 5 URLs"}
+{"ts": "2026-03-02T13:01:16.362524+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages?beta=true \"HTTP/1.1 200 OK\""}
+{"ts": "2026-03-02T13:01:16.441209+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Firecrawl MCP response: 11692 chars"}
+{"ts": "2026-03-02T13:01:16.442048+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Firecrawl MCP complete: 5 ok, 0 failed"}
+{"ts": "2026-03-02T13:01:16.442117+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Completed in 76.18s"}
+{"ts": "2026-03-02T13:01:16.442148+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 1: Research (Tavily MCP) ---"}
+{"ts": "2026-03-02T13:01:16.442182+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-02T13:01:16.442249+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Tavily MCP research: Florida (13 categories)"}
+{"ts": "2026-03-02T13:04:52.948589+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages?beta=true \"HTTP/1.1 200 OK\""}
+{"ts": "2026-03-02T13:04:53.001805+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "MCP research response: 22564 chars"}
+{"ts": "2026-03-02T13:04:53.002002+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "MCP: 0 raw → 0 unique articles"}
+{"ts": "2026-03-02T13:04:53.002064+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Completed in 216.56s"}
+{"ts": "2026-03-02T13:04:53.002091+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 2: Analysis ---"}
+{"ts": "2026-03-02T13:04:53.002120+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-02T13:04:53.002213+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Analyzing 0 articles (of 0) + 5 scraped pages"}
+{"ts": "2026-03-02T13:06:34.369079+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages \"HTTP/1.1 200 OK\""}
+{"ts": "2026-03-02T13:06:34.397684+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Analysis complete: 12 articles selected, 30yr rate: 5.98%"}
+{"ts": "2026-03-02T13:06:34.397799+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Completed in 101.40s"}
+{"ts": "2026-03-02T13:06:34.397849+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 3: Writing ---"}
+{"ts": "2026-03-02T13:06:34.397900+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-02T13:06:34.398193+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Writing newsletter with 12 stories"}
+{"ts": "2026-03-02T13:09:15.122924+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages \"HTTP/1.1 200 OK\""}
+{"ts": "2026-03-02T13:09:15.126419+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Writing response: 23466 chars"}
+{"ts": "2026-03-02T13:09:15.126873+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Parsed sections: ['HEADER', 'RESUMEN EJECUTIVO', 'HISTORIA_1', 'HISTORIA_2', 'HISTORIA_3', 'HISTORIA_4', 'HISTORIA_5', 'HISTORIA_6', 'MERCADO', 'INVERSION_LATINA', 'ESTRATEGIAS', 'RADAR', 'BTC_CRIPTO', 'FOOTER']"}
+{"ts": "2026-03-02T13:09:15.127028+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Completed in 160.73s"}
+{"ts": "2026-03-02T13:09:15.127096+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 4: Editorial ---"}
+{"ts": "2026-03-02T13:09:15.127175+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-02T13:09:15.127268+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Editorial review: 23480 chars, 6 stories"}
+{"ts": "2026-03-02T13:11:57.090799+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages \"HTTP/1.1 200 OK\""}
+{"ts": "2026-03-02T13:11:57.094056+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Editorial response: 23208 chars"}
+{"ts": "2026-03-02T13:11:57.094516+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Editorial complete: 16 Telegram messages"}
+{"ts": "2026-03-02T13:11:57.094635+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Completed in 161.97s"}
+{"ts": "2026-03-02T13:11:57.094719+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 5: Delivery ---"}
+{"ts": "2026-03-02T13:11:57.094796+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-02T13:11:57.094854+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Sending 16 messages to Telegram"}
+{"ts": "2026-03-02T13:11:57.094910+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 1/16 (177 chars)"}
+{"ts": "2026-03-02T13:11:59.210664+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 2/16 (785 chars)"}
+{"ts": "2026-03-02T13:12:02.385635+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 3/16 (1591 chars)"}
+{"ts": "2026-03-02T13:12:04.351277+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 4/16 (1698 chars)"}
+{"ts": "2026-03-02T13:12:06.327819+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 5/16 (1919 chars)"}
+{"ts": "2026-03-02T13:12:08.836969+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 6/16 (2050 chars)"}
+{"ts": "2026-03-02T13:12:10.867044+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 7/16 (1927 chars)"}
+{"ts": "2026-03-02T13:12:12.958236+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 8/16 (2079 chars)"}
+{"ts": "2026-03-02T13:12:15.388356+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 9/16 (1253 chars)"}
+{"ts": "2026-03-02T13:12:17.811566+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 10/16 (1359 chars)"}
+{"ts": "2026-03-02T13:12:20.869483+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 11/16 (1343 chars)"}
+{"ts": "2026-03-02T13:12:22.922497+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 12/16 (1980 chars)"}
+{"ts": "2026-03-02T13:12:25.024861+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 13/16 (1527 chars)"}
+{"ts": "2026-03-02T13:12:27.022804+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 14/16 (1600 chars)"}
+{"ts": "2026-03-02T13:12:29.253053+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 15/16 (1145 chars)"}
+{"ts": "2026-03-02T13:12:31.213058+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 16/16 (202 chars)"}
+{"ts": "2026-03-02T13:12:33.022539+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Pinned message 75"}
+{"ts": "2026-03-02T13:12:33.022785+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Delivery complete: 16 sent, 0 failed"}
+{"ts": "2026-03-02T13:12:33.022939+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Completed in 35.93s"}
+{"ts": "2026-03-02T13:12:33.023107+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-02T13:12:33.023199+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "Run complete: {'run_id': '20260302_080000', 'state': 'florida', 'scraped_pages': 5, 'articles_found': 0, 'articles_selected': 12, 'messages_sent': 16, 'messages_failed': 0, 'dry_run': False}"}
+{"ts": "2026-03-02T13:12:33.023276+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-02T13:12:33.023466+00:00", "level": "INFO", "logger": "scheduler.job", "msg": "Scheduled pipeline completed: {'run_id': '20260302_080000', 'state': 'florida', 'scraped_pages': 5, 'articles_found': 0, 'articles_selected': 12, 'messages_sent': 16, 'messages_failed': 0, 'dry_run': False}"}
+{"ts": "2026-03-02T13:12:33.023963+00:00", "level": "INFO", "logger": "apscheduler.executors.default", "msg": "Job \"Florida Realty Intel Daily Report (trigger: cron[day_of_week='mon-fri', hour='8', minute='0'], next run at: 2026-03-03 08:00:00 EST)\" executed successfully"}
+{"ts": "2026-03-03T13:00:00.479226+00:00", "level": "INFO", "logger": "apscheduler.executors.default", "msg": "Running job \"Florida Realty Intel Daily Report (trigger: cron[day_of_week='mon-fri', hour='8', minute='0'], next run at: 2026-03-04 08:00:00 EST)\" (scheduled at 2026-03-03 08:00:00-05:00)"}
+{"ts": "2026-03-03T13:00:00.481445+00:00", "level": "INFO", "logger": "scheduler.job", "msg": "Scheduled pipeline starting..."}
+{"ts": "2026-03-03T13:00:00.512984+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-03T13:00:00.513077+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "Pipeline run 20260303_080000 | State: FLORIDA"}
+{"ts": "2026-03-03T13:00:00.513115+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-03T13:00:00.513148+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 0: Firecrawl ---"}
+{"ts": "2026-03-03T13:00:00.513200+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-03T13:00:00.513236+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Firecrawl MCP: scraping 5 URLs"}
+{"ts": "2026-03-03T13:01:06.735365+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages?beta=true \"HTTP/1.1 200 OK\""}
+{"ts": "2026-03-03T13:01:06.747667+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Firecrawl MCP response: 8844 chars"}
+{"ts": "2026-03-03T13:01:06.748583+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Firecrawl MCP complete: 5 ok, 0 failed"}
+{"ts": "2026-03-03T13:01:06.748727+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Completed in 66.24s"}
+{"ts": "2026-03-03T13:01:06.748797+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 1: Research (Tavily MCP) ---"}
+{"ts": "2026-03-03T13:01:06.748859+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-03T13:01:06.748997+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Tavily MCP research: Florida (13 categories)"}
+{"ts": "2026-03-03T13:06:32.681721+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages?beta=true \"HTTP/1.1 400 Bad Request\""}
+{"ts": "2026-03-03T13:06:32.684163+00:00", "level": "WARNING", "logger": "ResearchAgent", "msg": "Tavily MCP failed (Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Connection to MCP server timed out. The server may be unavailable or unresponsive.'}, 'request_id': 'req_011CYgBxmBW4HEcDkdDQnwNA'}). Falling back to direct Tavily SDK."}
+{"ts": "2026-03-03T13:06:32.684322+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Tavily SDK research: Florida (13 categories)"}
+{"ts": "2026-03-03T13:06:35.862907+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida HOA insurance property tax changes 2026...': 5 results"}
+{"ts": "2026-03-03T13:06:35.877421+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Miami Florida real estate market 2026 prices inven...': 5 results"}
+{"ts": "2026-03-03T13:06:35.974962+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Fed interest rate decision housing market Florida ...': 5 results"}
+{"ts": "2026-03-03T13:06:37.128614+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida mortgage rates today 2026 30-year fixed...': 5 results"}
+{"ts": "2026-03-03T13:06:38.419111+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Orlando Florida real estate market 2026 prices inv...': 5 results"}
+{"ts": "2026-03-03T13:06:39.442869+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Orlando housing market median price days on market...': 5 results"}
+{"ts": "2026-03-03T13:06:39.639815+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida real estate legislation new laws 2026...': 5 results"}
+{"ts": "2026-03-03T13:06:39.852800+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Tampa Florida real estate market 2026 prices inven...': 5 results"}
+{"ts": "2026-03-03T13:06:40.001314+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Miami housing market median price days on market 2...': 5 results"}
+{"ts": "2026-03-03T13:06:41.104086+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Jacksonville Florida real estate market 2026 price...': 5 results"}
+{"ts": "2026-03-03T13:06:41.524461+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Tampa housing market median price days on market 2...': 5 results"}
+{"ts": "2026-03-03T13:06:42.106139+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Jacksonville housing market median price days on m...': 5 results"}
+{"ts": "2026-03-03T13:06:43.539872+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Fort Lauderdale housing market median price days o...': 5 results"}
+{"ts": "2026-03-03T13:06:43.556224+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Latin American buyers Florida real estate 2026...': 5 results"}
+{"ts": "2026-03-03T13:06:43.640082+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Fort Lauderdale Florida real estate market 2026 pr...': 5 results"}
+{"ts": "2026-03-03T13:06:45.075780+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'South Florida luxury real estate $5M+ market 2026...': 5 results"}
+{"ts": "2026-03-03T13:06:45.505474+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Miami ultra-luxury properties sales 2026...': 5 results"}
+{"ts": "2026-03-03T13:06:45.999309+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'international investors Miami real estate Colombia...': 5 results"}
+{"ts": "2026-03-03T13:06:45.999521+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida new construction housing starts 2026...': 5 results"}
+{"ts": "2026-03-03T13:06:47.021090+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida new development pre-construction 2026...': 5 results"}
+{"ts": "2026-03-03T13:06:47.536044+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida housing inventory levels prices 2026...': 5 results"}
+{"ts": "2026-03-03T13:06:47.536893+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida median home prices days on market statisti...': 5 results"}
+{"ts": "2026-03-03T13:06:48.353620+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida economy housing market outlook 2026...': 5 results"}
+{"ts": "2026-03-03T13:06:48.353810+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida real estate investment trends 2026...': 5 results"}
+{"ts": "2026-03-03T13:06:49.887813+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'cryptocurrency payment real estate property Florid...': 5 results"}
+{"ts": "2026-03-03T13:06:51.448166+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Bitcoin crypto buyers real estate Florida Miami 20...': 5 results"}
+{"ts": "2026-03-03T13:06:51.755235+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "SDK: 130 raw → 91 unique articles"}
+{"ts": "2026-03-03T13:06:51.755520+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Completed in 345.00s"}
+{"ts": "2026-03-03T13:06:51.755556+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 2: Analysis ---"}
+{"ts": "2026-03-03T13:06:51.755585+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-03T13:06:51.755755+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Analyzing 40 articles (of 91) + 5 scraped pages"}
+{"ts": "2026-03-03T13:08:20.310580+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages \"HTTP/1.1 200 OK\""}
+{"ts": "2026-03-03T13:08:20.315101+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Analysis complete: 12 articles selected, 30yr rate: 5.98%"}
+{"ts": "2026-03-03T13:08:20.315277+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Completed in 88.56s"}
+{"ts": "2026-03-03T13:08:20.315367+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 3: Writing ---"}
+{"ts": "2026-03-03T13:08:20.315442+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-03T13:08:20.315928+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Writing newsletter with 12 stories"}
+{"ts": "2026-03-03T13:10:58.523140+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages \"HTTP/1.1 200 OK\""}
+{"ts": "2026-03-03T13:10:58.527218+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Writing response: 23414 chars"}
+{"ts": "2026-03-03T13:10:58.527628+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Parsed sections: ['HEADER', 'RESUMEN EJECUTIVO', 'HISTORIA_1', 'HISTORIA_2', 'HISTORIA_3', 'HISTORIA_4', 'HISTORIA_5', 'HISTORIA_6', 'MERCADO', 'INVERSION_LATINA', 'ESTRATEGIAS', 'RADAR', 'BTC_CRIPTO', 'FOOTER']"}
+{"ts": "2026-03-03T13:10:58.527784+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Completed in 158.21s"}
+{"ts": "2026-03-03T13:10:58.527861+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 4: Editorial ---"}
+{"ts": "2026-03-03T13:10:58.527937+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-03T13:10:58.528044+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Editorial review: 23428 chars, 6 stories"}
+{"ts": "2026-03-03T13:13:39.806219+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages \"HTTP/1.1 200 OK\""}
+{"ts": "2026-03-03T13:13:39.809690+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Editorial response: 23408 chars"}
+{"ts": "2026-03-03T13:13:39.810087+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Editorial complete: 18 Telegram messages"}
+{"ts": "2026-03-03T13:13:39.810201+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Completed in 161.28s"}
+{"ts": "2026-03-03T13:13:39.810276+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 5: Delivery ---"}
+{"ts": "2026-03-03T13:13:39.810346+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-03T13:13:39.810411+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Sending 18 messages to Telegram"}
+{"ts": "2026-03-03T13:13:39.810476+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 1/18 (178 chars)"}
+{"ts": "2026-03-03T13:13:41.754162+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 2/18 (702 chars)"}
+{"ts": "2026-03-03T13:13:43.765972+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 3/18 (1758 chars)"}
+{"ts": "2026-03-03T13:13:45.814514+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 4/18 (1829 chars)"}
+{"ts": "2026-03-03T13:13:47.827364+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 5/18 (1994 chars)"}
+{"ts": "2026-03-03T13:13:49.787341+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 6/18 (2008 chars)"}
+{"ts": "2026-03-03T13:13:51.814586+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 7/18 (1127 chars)"}
+{"ts": "2026-03-03T13:13:53.915934+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 8/18 (967 chars)"}
+{"ts": "2026-03-03T13:13:56.051626+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 9/18 (1165 chars)"}
+{"ts": "2026-03-03T13:13:58.109479+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 10/18 (1046 chars)"}
+{"ts": "2026-03-03T13:14:00.204515+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 11/18 (1082 chars)"}
+{"ts": "2026-03-03T13:14:02.434509+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 12/18 (1508 chars)"}
+{"ts": "2026-03-03T13:14:04.435007+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 13/18 (1283 chars)"}
+{"ts": "2026-03-03T13:14:06.498231+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 14/18 (1845 chars)"}
+{"ts": "2026-03-03T13:14:08.594592+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 15/18 (1290 chars)"}
+{"ts": "2026-03-03T13:14:10.711971+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 16/18 (1498 chars)"}
+{"ts": "2026-03-03T13:14:12.859480+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 17/18 (1284 chars)"}
+{"ts": "2026-03-03T13:14:14.796667+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 18/18 (202 chars)"}
+{"ts": "2026-03-03T13:14:16.827268+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Pinned message 92"}
+{"ts": "2026-03-03T13:14:16.827499+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Delivery complete: 18 sent, 0 failed"}
+{"ts": "2026-03-03T13:14:16.827616+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Completed in 37.02s"}
+{"ts": "2026-03-03T13:14:16.827732+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-03T13:14:16.827830+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "Run complete: {'run_id': '20260303_080000', 'state': 'florida', 'scraped_pages': 5, 'articles_found': 91, 'articles_selected': 12, 'messages_sent': 18, 'messages_failed': 0, 'dry_run': False}"}
+{"ts": "2026-03-03T13:14:16.827912+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-03T13:14:16.828186+00:00", "level": "INFO", "logger": "scheduler.job", "msg": "Scheduled pipeline completed: {'run_id': '20260303_080000', 'state': 'florida', 'scraped_pages': 5, 'articles_found': 91, 'articles_selected': 12, 'messages_sent': 18, 'messages_failed': 0, 'dry_run': False}"}
+{"ts": "2026-03-03T13:14:16.836029+00:00", "level": "INFO", "logger": "apscheduler.executors.default", "msg": "Job \"Florida Realty Intel Daily Report (trigger: cron[day_of_week='mon-fri', hour='8', minute='0'], next run at: 2026-03-04 08:00:00 EST)\" executed successfully"}
+{"ts": "2026-03-04T13:00:00.499160+00:00", "level": "INFO", "logger": "apscheduler.executors.default", "msg": "Running job \"Florida Realty Intel Daily Report (trigger: cron[day_of_week='mon-fri', hour='8', minute='0'], next run at: 2026-03-05 08:00:00 EST)\" (scheduled at 2026-03-04 08:00:00-05:00)"}
+{"ts": "2026-03-04T13:00:00.500464+00:00", "level": "INFO", "logger": "scheduler.job", "msg": "Scheduled pipeline starting..."}
+{"ts": "2026-03-04T13:00:02.723789+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-04T13:00:02.723910+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "Pipeline run 20260304_080002 | State: FLORIDA"}
+{"ts": "2026-03-04T13:00:02.723968+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-04T13:00:02.724006+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 0: Firecrawl ---"}
+{"ts": "2026-03-04T13:00:02.724073+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-04T13:00:02.724115+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Firecrawl MCP: scraping 5 URLs"}
+{"ts": "2026-03-04T13:05:12.170903+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages?beta=true \"HTTP/1.1 400 Bad Request\""}
+{"ts": "2026-03-04T13:05:12.173311+00:00", "level": "WARNING", "logger": "FirecrawlAgent", "msg": "Firecrawl MCP failed (Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Connection to MCP server timed out. The server may be unavailable or unresponsive.'}, 'request_id': 'req_011CYi5gyKNDA6TkP5J6qx2w'}). Falling back to SDK."}
+{"ts": "2026-03-04T13:05:21.338810+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "SDK scraped 'Freddie Mac PMMS': 8000 chars"}
+{"ts": "2026-03-04T13:05:21.530117+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "SDK scraped 'Florida Realtors': 1834 chars"}
+{"ts": "2026-03-04T13:05:21.581150+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "SDK scraped 'Redfin Data Center': 8000 chars"}
+{"ts": "2026-03-04T13:05:22.053821+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "SDK scraped 'Zillow Research': 4003 chars"}
+{"ts": "2026-03-04T13:05:22.473341+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "SDK scraped 'NAR Research': 8000 chars"}
+{"ts": "2026-03-04T13:05:22.473903+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Completed in 319.75s"}
+{"ts": "2026-03-04T13:05:22.474051+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 1: Research (Tavily MCP) ---"}
+{"ts": "2026-03-04T13:05:22.474161+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-04T13:05:22.474341+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Tavily MCP research: Florida (13 categories)"}
+{"ts": "2026-03-04T13:10:47.849065+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages?beta=true \"HTTP/1.1 400 Bad Request\""}
+{"ts": "2026-03-04T13:10:47.851191+00:00", "level": "WARNING", "logger": "ResearchAgent", "msg": "Tavily MCP failed (Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Connection to MCP server timed out. The server may be unavailable or unresponsive.'}, 'request_id': 'req_011CYi66a6nQ133zBSbVYzi1'}). Falling back to direct Tavily SDK."}
+{"ts": "2026-03-04T13:10:47.851368+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Tavily SDK research: Florida (13 categories)"}
+{"ts": "2026-03-04T13:10:50.414498+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Miami Florida real estate market 2026 prices inven...': 5 results"}
+{"ts": "2026-03-04T13:10:50.418901+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida HOA insurance property tax changes 2026...': 5 results"}
+{"ts": "2026-03-04T13:10:50.482682+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Fed interest rate decision housing market Florida ...': 5 results"}
+{"ts": "2026-03-04T13:10:51.333501+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida real estate legislation new laws 2026...': 5 results"}
+{"ts": "2026-03-04T13:10:52.258209+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Orlando Florida real estate market 2026 prices inv...': 5 results"}
+{"ts": "2026-03-04T13:10:52.529576+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Miami housing market median price days on market 2...': 5 results"}
+{"ts": "2026-03-04T13:10:52.662777+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida mortgage rates today 2026 30-year fixed...': 5 results"}
+{"ts": "2026-03-04T13:10:53.755063+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Tampa housing market median price days on market 2...': 5 results"}
+{"ts": "2026-03-04T13:10:54.302389+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Orlando housing market median price days on market...': 5 results"}
+{"ts": "2026-03-04T13:10:54.531192+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Tampa Florida real estate market 2026 prices inven...': 5 results"}
+{"ts": "2026-03-04T13:10:54.761990+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Jacksonville housing market median price days on m...': 5 results"}
+{"ts": "2026-03-04T13:10:55.224841+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Jacksonville Florida real estate market 2026 price...': 5 results"}
+{"ts": "2026-03-04T13:10:55.738503+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Fort Lauderdale Florida real estate market 2026 pr...': 5 results"}
+{"ts": "2026-03-04T13:10:56.114544+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Fort Lauderdale housing market median price days o...': 5 results"}
+{"ts": "2026-03-04T13:10:56.629190+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Latin American buyers Florida real estate 2026...': 5 results"}
+{"ts": "2026-03-04T13:10:57.681813+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Miami ultra-luxury properties sales 2026...': 5 results"}
+{"ts": "2026-03-04T13:10:58.297126+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'international investors Miami real estate Colombia...': 5 results"}
+{"ts": "2026-03-04T13:10:58.334828+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida new construction housing starts 2026...': 5 results"}
+{"ts": "2026-03-04T13:10:58.497746+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida new development pre-construction 2026...': 5 results"}
+{"ts": "2026-03-04T13:10:59.729888+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'South Florida luxury real estate $5M+ market 2026...': 5 results"}
+{"ts": "2026-03-04T13:10:59.948627+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida median home prices days on market statisti...': 5 results"}
+{"ts": "2026-03-04T13:11:00.094957+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida housing inventory levels prices 2026...': 5 results"}
+{"ts": "2026-03-04T13:11:00.280993+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida economy housing market outlook 2026...': 5 results"}
+{"ts": "2026-03-04T13:11:00.960382+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida real estate investment trends 2026...': 5 results"}
+{"ts": "2026-03-04T13:11:01.675447+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Bitcoin crypto buyers real estate Florida Miami 20...': 5 results"}
+{"ts": "2026-03-04T13:11:02.394172+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'cryptocurrency payment real estate property Florid...': 5 results"}
+{"ts": "2026-03-04T13:11:02.737312+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "SDK: 130 raw → 95 unique articles"}
+{"ts": "2026-03-04T13:11:02.737549+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Completed in 340.26s"}
+{"ts": "2026-03-04T13:11:02.737583+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 2: Analysis ---"}
+{"ts": "2026-03-04T13:11:02.737611+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-04T13:11:02.737729+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Analyzing 40 articles (of 95) + 5 scraped pages"}
+{"ts": "2026-03-04T13:12:34.348301+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages \"HTTP/1.1 200 OK\""}
+{"ts": "2026-03-04T13:12:34.353348+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Analysis complete: 12 articles selected, 30yr rate: 5.98%"}
+{"ts": "2026-03-04T13:12:34.353509+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Completed in 91.62s"}
+{"ts": "2026-03-04T13:12:34.353591+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 3: Writing ---"}
+{"ts": "2026-03-04T13:12:34.353663+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-04T13:12:34.354202+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Writing newsletter with 12 stories"}
+{"ts": "2026-03-04T13:15:01.942206+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages \"HTTP/1.1 200 OK\""}
+{"ts": "2026-03-04T13:15:01.945913+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Writing response: 22124 chars"}
+{"ts": "2026-03-04T13:15:01.946342+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Parsed sections: ['HEADER', 'RESUMEN EJECUTIVO', 'HISTORIA_1', 'HISTORIA_2', 'HISTORIA_3', 'HISTORIA_4', 'HISTORIA_5', 'HISTORIA_6', 'MERCADO', 'INVERSION_LATINA', 'ESTRATEGIAS', 'RADAR', 'BTC_CRIPTO', 'FOOTER']"}
+{"ts": "2026-03-04T13:15:01.946527+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Completed in 147.59s"}
+{"ts": "2026-03-04T13:15:01.946647+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 4: Editorial ---"}
+{"ts": "2026-03-04T13:15:01.946731+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-04T13:15:01.946863+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Editorial review: 22138 chars, 6 stories"}
+{"ts": "2026-03-04T13:17:33.486406+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages \"HTTP/1.1 200 OK\""}
+{"ts": "2026-03-04T13:17:33.488961+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Editorial response: 22368 chars"}
+{"ts": "2026-03-04T13:17:33.489386+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Editorial complete: 16 Telegram messages"}
+{"ts": "2026-03-04T13:17:33.489491+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Completed in 151.54s"}
+{"ts": "2026-03-04T13:17:33.489561+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 5: Delivery ---"}
+{"ts": "2026-03-04T13:17:33.489629+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-04T13:17:33.489689+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Sending 16 messages to Telegram"}
+{"ts": "2026-03-04T13:17:33.489756+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 1/16 (181 chars)"}
+{"ts": "2026-03-04T13:17:35.696107+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 2/16 (796 chars)"}
+{"ts": "2026-03-04T13:17:38.174871+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 3/16 (1718 chars)"}
+{"ts": "2026-03-04T13:17:40.092821+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 4/16 (1737 chars)"}
+{"ts": "2026-03-04T13:17:42.039397+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 5/16 (1756 chars)"}
+{"ts": "2026-03-04T13:17:44.093468+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 6/16 (1884 chars)"}
+{"ts": "2026-03-04T13:17:46.332096+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 7/16 (1994 chars)"}
+{"ts": "2026-03-04T13:17:48.587032+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 8/16 (1879 chars)"}
+{"ts": "2026-03-04T13:17:51.082352+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 9/16 (981 chars)"}
+{"ts": "2026-03-04T13:17:53.036579+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 10/16 (1618 chars)"}
+{"ts": "2026-03-04T13:17:55.095290+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 11/16 (939 chars)"}
+{"ts": "2026-03-04T13:17:57.196588+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 12/16 (2036 chars)"}
+{"ts": "2026-03-04T13:17:59.287119+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 13/16 (1324 chars)"}
+{"ts": "2026-03-04T13:18:01.527249+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 14/16 (1598 chars)"}
+{"ts": "2026-03-04T13:18:03.607268+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 15/16 (1149 chars)"}
+{"ts": "2026-03-04T13:18:05.655240+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 16/16 (202 chars)"}
+{"ts": "2026-03-04T13:18:07.303573+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Pinned message 111"}
+{"ts": "2026-03-04T13:18:07.303797+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Delivery complete: 16 sent, 0 failed"}
+{"ts": "2026-03-04T13:18:07.303923+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Completed in 33.81s"}
+{"ts": "2026-03-04T13:18:07.304019+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-04T13:18:07.304106+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "Run complete: {'run_id': '20260304_080002', 'state': 'florida', 'scraped_pages': 5, 'articles_found': 95, 'articles_selected': 12, 'messages_sent': 16, 'messages_failed': 0, 'dry_run': False}"}
+{"ts": "2026-03-04T13:18:07.304181+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-04T13:18:07.304489+00:00", "level": "INFO", "logger": "scheduler.job", "msg": "Scheduled pipeline completed: {'run_id': '20260304_080002', 'state': 'florida', 'scraped_pages': 5, 'articles_found': 95, 'articles_selected': 12, 'messages_sent': 16, 'messages_failed': 0, 'dry_run': False}"}
+{"ts": "2026-03-04T13:18:07.312801+00:00", "level": "INFO", "logger": "apscheduler.executors.default", "msg": "Job \"Florida Realty Intel Daily Report (trigger: cron[day_of_week='mon-fri', hour='8', minute='0'], next run at: 2026-03-05 08:00:00 EST)\" executed successfully"}

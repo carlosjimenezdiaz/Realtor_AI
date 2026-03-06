@@ -1,0 +1,188 @@
+/Users/carlosjimenezdiaz/Desktop/Realtor/.venv/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-03-04 17:27:09,266 [INFO] apscheduler.scheduler: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-04 17:27:09,268 [INFO] scheduler: Scheduler started for Florida Realty Intel
+  Schedule: Mon-Fri at 08:00 America/New_York
+  Waiting for next scheduled run...
+2026-03-04 17:27:09,268 [INFO] apscheduler.scheduler: Added job "Florida Realty Intel Daily Report" to job store "default"
+2026-03-04 17:27:09,268 [INFO] apscheduler.scheduler: Scheduler started
+2026-03-05 08:00:00,318 [INFO] apscheduler.executors.default: Running job "Florida Realty Intel Daily Report (trigger: cron[day_of_week='mon-fri', hour='8', minute='0'], next run at: 2026-03-05 08:00:00 EST)" (scheduled at 2026-03-05 08:00:00-05:00)
+2026-03-05 08:00:00,323 [INFO] scheduler.job: Scheduled pipeline starting...
+2026-03-05 08:00:00,385 [INFO] Orchestrator: ==================================================
+2026-03-05 08:00:00,385 [INFO] Orchestrator: Pipeline run 20260305_080000 | State: FLORIDA
+2026-03-05 08:00:00,385 [INFO] Orchestrator: ==================================================
+2026-03-05 08:00:00,385 [INFO] Orchestrator: --- Phase 0: Firecrawl ---
+2026-03-05 08:00:00,385 [INFO] FirecrawlAgent: Starting (attempt 1/3)
+2026-03-05 08:00:00,385 [INFO] FirecrawlAgent: Firecrawl MCP: scraping 6 URLs
+2026-03-05 08:01:04,493 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages?beta=true "HTTP/1.1 200 OK"
+2026-03-05 08:01:04,564 [INFO] FirecrawlAgent: Firecrawl MCP response: 7750 chars
+2026-03-05 08:01:04,564 [INFO] FirecrawlAgent: Firecrawl MCP complete: 5 ok, 1 failed
+2026-03-05 08:01:04,565 [INFO] FirecrawlAgent: Completed in 64.18s
+2026-03-05 08:01:04,565 [INFO] Orchestrator: --- Phase 1: Research (Tavily MCP) ---
+2026-03-05 08:01:04,565 [INFO] ResearchAgent: Starting (attempt 1/3)
+2026-03-05 08:01:04,565 [INFO] ResearchAgent: Perplexity research: Florida (13 categories)
+2026-03-05 08:01:09,978 [INFO] ResearchAgent: Query 'Florida mortgage rates today 2026 30-year fixed': 7 articles
+2026-03-05 08:01:12,671 [INFO] ResearchAgent: Query 'Fed interest rate decision housing market Florida 2026': 7 articles
+2026-03-05 08:01:12,709 [INFO] ResearchAgent: Query 'Florida HOA insurance property tax changes 2026': 7 articles
+2026-03-05 08:01:14,226 [INFO] ResearchAgent: Query 'Miami Florida real estate market 2026 prices inventory trend': 7 articles
+2026-03-05 08:01:14,228 [INFO] ResearchAgent: Query 'Florida real estate legislation new laws 2026': 8 articles
+2026-03-05 08:01:15,762 [INFO] ResearchAgent: Query 'Miami housing market median price days on market 2026': 9 articles
+2026-03-05 08:01:17,791 [INFO] ResearchAgent: Query 'Orlando housing market median price days on market 2026': 8 articles
+2026-03-05 08:01:19,636 [INFO] ResearchAgent: Query 'Tampa housing market median price days on market 2026': 7 articles
+2026-03-05 08:01:20,558 [INFO] ResearchAgent: Query 'Orlando Florida real estate market 2026 prices inventory tre': 8 articles
+2026-03-05 08:01:22,880 [INFO] ResearchAgent: Query 'Jacksonville housing market median price days on market 2026': 8 articles
+2026-03-05 08:01:24,132 [INFO] ResearchAgent: Query 'Jacksonville Florida real estate market 2026 prices inventor': 7 articles
+2026-03-05 08:01:25,113 [INFO] ResearchAgent: Query 'Tampa Florida real estate market 2026 prices inventory trend': 6 articles
+2026-03-05 08:01:26,208 [INFO] ResearchAgent: Query 'Fort Lauderdale housing market median price days on market 2': 10 articles
+2026-03-05 08:01:29,023 [INFO] ResearchAgent: Query 'Fort Lauderdale Florida real estate market 2026 prices inven': 9 articles
+2026-03-05 08:01:29,472 [INFO] ResearchAgent: Query 'international investors Miami real estate Colombia Venezuela': 8 articles
+2026-03-05 08:01:30,901 [INFO] ResearchAgent: Query 'Latin American buyers Florida real estate 2026': 9 articles
+2026-03-05 08:01:35,234 [INFO] ResearchAgent: Query 'Florida new construction housing starts 2026': 9 articles
+2026-03-05 08:01:36,809 [INFO] ResearchAgent: Query 'South Florida luxury real estate $5M+ market 2026': 9 articles
+2026-03-05 08:01:36,921 [INFO] ResearchAgent: Query 'Miami ultra-luxury properties sales 2026': 8 articles
+2026-03-05 08:01:37,820 [INFO] ResearchAgent: Query 'Florida new development pre-construction 2026': 7 articles
+2026-03-05 08:01:38,589 [INFO] ResearchAgent: Query 'Florida housing inventory levels prices 2026': 7 articles
+2026-03-05 08:01:42,559 [INFO] ResearchAgent: Query 'Florida median home prices days on market statistics 2026': 7 articles
+2026-03-05 08:01:45,561 [INFO] ResearchAgent: Query 'Florida real estate investment trends 2026': 6 articles
+2026-03-05 08:01:45,562 [INFO] ResearchAgent: Query 'Florida economy housing market outlook 2026': 7 articles
+2026-03-05 08:01:46,235 [INFO] ResearchAgent: Query 'Bitcoin crypto buyers real estate Florida Miami 2026': 6 articles
+2026-03-05 08:01:47,659 [INFO] ResearchAgent: Query 'cryptocurrency payment real estate property Florida BTC 2026': 7 articles
+2026-03-05 08:01:47,726 [INFO] ResearchAgent: Perplexity: 198 raw → 29 unique articles
+2026-03-05 08:01:47,726 [INFO] ResearchAgent: Completed in 43.16s
+2026-03-05 08:01:47,726 [INFO] Orchestrator: --- Phase 2: Analysis ---
+2026-03-05 08:01:47,726 [INFO] AnalysisAgent: Starting (attempt 1/3)
+2026-03-05 08:01:47,726 [INFO] AnalysisAgent: Analyzing 29 articles (of 29) + 5 scraped pages
+2026-03-05 08:03:15,422 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-03-05 08:03:15,452 [INFO] AnalysisAgent: Analysis complete: 12 articles selected, 30yr rate: 5.975%
+2026-03-05 08:03:15,452 [INFO] AnalysisAgent: Completed in 87.72s
+2026-03-05 08:03:15,452 [INFO] Orchestrator: --- Phase 3: Writing ---
+2026-03-05 08:03:15,452 [INFO] WritingAgent: Starting (attempt 1/3)
+2026-03-05 08:03:15,452 [INFO] WritingAgent: Writing newsletter with 12 stories
+2026-03-05 08:05:42,022 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-03-05 08:05:42,026 [INFO] WritingAgent: Writing response: 22585 chars
+2026-03-05 08:05:42,026 [INFO] WritingAgent: Parsed sections: ['HEADER', 'RESUMEN EJECUTIVO', 'HISTORIA_1', 'HISTORIA_2', 'HISTORIA_3', 'HISTORIA_4', 'HISTORIA_5', 'HISTORIA_6', 'MERCADO', 'INVERSION_LATINA', 'ESTRATEGIAS', 'RADAR', 'BTC_CRIPTO', 'FOOTER']
+2026-03-05 08:05:42,026 [INFO] WritingAgent: Completed in 146.57s
+2026-03-05 08:05:42,026 [INFO] Orchestrator: --- Phase 4: Editorial ---
+2026-03-05 08:05:42,027 [INFO] EditorialAgent: Starting (attempt 1/3)
+2026-03-05 08:05:42,027 [INFO] EditorialAgent: Editorial review: 22599 chars, 6 stories
+2026-03-05 08:08:10,270 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-03-05 08:08:10,273 [INFO] EditorialAgent: Editorial response: 22724 chars
+2026-03-05 08:08:10,274 [INFO] EditorialAgent: Editorial complete: 16 Telegram messages
+2026-03-05 08:08:10,274 [INFO] EditorialAgent: Completed in 148.25s
+2026-03-05 08:08:10,274 [INFO] Orchestrator: --- Phase 5: Delivery ---
+2026-03-05 08:08:10,274 [INFO] DeliveryAgent: Starting (attempt 1/3)
+2026-03-05 08:08:10,274 [INFO] DeliveryAgent: Sending 16 messages to Telegram
+2026-03-05 08:08:10,274 [INFO] DeliveryAgent: Message 1/16 (178 chars)
+2026-03-05 08:10:11,209 [INFO] DeliveryAgent: Message 2/16 (841 chars)
+2026-03-05 08:12:12,050 [INFO] DeliveryAgent: Message 3/16 (1829 chars)
+2026-03-05 08:14:12,918 [INFO] DeliveryAgent: Message 4/16 (1754 chars)
+2026-03-05 08:16:13,723 [INFO] DeliveryAgent: Message 5/16 (1902 chars)
+2026-03-05 08:18:14,625 [INFO] DeliveryAgent: Message 6/16 (1884 chars)
+2026-03-05 08:20:15,424 [INFO] DeliveryAgent: Message 7/16 (2050 chars)
+2026-03-05 08:22:16,325 [INFO] DeliveryAgent: Message 8/16 (1914 chars)
+2026-03-05 08:24:17,120 [INFO] DeliveryAgent: Message 9/16 (829 chars)
+2026-03-05 08:26:18,001 [INFO] DeliveryAgent: Message 10/16 (1398 chars)
+2026-03-05 08:28:18,964 [INFO] DeliveryAgent: Message 11/16 (1032 chars)
+2026-03-05 08:30:19,744 [INFO] DeliveryAgent: Message 12/16 (2025 chars)
+2026-03-05 08:32:21,053 [INFO] DeliveryAgent: Message 13/16 (1566 chars)
+2026-03-05 08:34:21,826 [INFO] DeliveryAgent: Message 14/16 (1399 chars)
+2026-03-05 08:36:22,736 [INFO] DeliveryAgent: Message 15/16 (1348 chars)
+2026-03-05 08:38:23,643 [INFO] DeliveryAgent: Message 16/16 (202 chars)
+2026-03-05 08:38:25,168 [INFO] DeliveryAgent: Pinned message 145
+2026-03-05 08:38:25,168 [INFO] DeliveryAgent: Delivery complete: 16 sent, 0 failed
+2026-03-05 08:38:25,168 [INFO] DeliveryAgent: Completed in 1814.88s
+2026-03-05 08:38:25,168 [INFO] Orchestrator: ==================================================
+2026-03-05 08:38:25,169 [INFO] Orchestrator: Run complete: {'run_id': '20260305_080000', 'state': 'florida', 'scraped_pages': 5, 'articles_found': 29, 'articles_selected': 12, 'messages_sent': 16, 'messages_failed': 0, 'dry_run': False}
+2026-03-05 08:38:25,169 [INFO] Orchestrator: ==================================================
+2026-03-05 08:38:25,169 [INFO] scheduler.job: Scheduled pipeline completed: {'run_id': '20260305_080000', 'state': 'florida', 'scraped_pages': 5, 'articles_found': 29, 'articles_selected': 12, 'messages_sent': 16, 'messages_failed': 0, 'dry_run': False}
+2026-03-05 08:38:25,169 [INFO] apscheduler.executors.default: Job "Florida Realty Intel Daily Report (trigger: cron[day_of_week='mon-fri', hour='8', minute='0'], next run at: 2026-03-06 08:00:00 EST)" executed successfully
+2026-03-06 08:00:00,523 [INFO] apscheduler.executors.default: Running job "Florida Realty Intel Daily Report (trigger: cron[day_of_week='mon-fri', hour='8', minute='0'], next run at: 2026-03-09 08:00:00 EDT)" (scheduled at 2026-03-06 08:00:00-05:00)
+2026-03-06 08:00:00,532 [INFO] scheduler.job: Scheduled pipeline starting...
+2026-03-06 08:00:00,585 [INFO] Orchestrator: ==================================================
+2026-03-06 08:00:00,585 [INFO] Orchestrator: Pipeline run 20260306_080000 | State: FLORIDA
+2026-03-06 08:00:00,585 [INFO] Orchestrator: ==================================================
+2026-03-06 08:00:00,585 [INFO] Orchestrator: --- Phase 0: Firecrawl ---
+2026-03-06 08:00:00,585 [INFO] FirecrawlAgent: Starting (attempt 1/3)
+2026-03-06 08:00:00,585 [INFO] FirecrawlAgent: Firecrawl MCP: scraping 6 URLs
+2026-03-06 08:01:14,191 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages?beta=true "HTTP/1.1 200 OK"
+2026-03-06 08:01:14,215 [INFO] FirecrawlAgent: Firecrawl MCP response: 10057 chars
+2026-03-06 08:01:14,217 [INFO] FirecrawlAgent: Firecrawl MCP complete: 6 ok, 0 failed
+2026-03-06 08:01:14,218 [INFO] FirecrawlAgent: Completed in 73.63s
+2026-03-06 08:01:14,218 [INFO] Orchestrator: --- Phase 1: Research (Tavily MCP) ---
+2026-03-06 08:01:14,218 [INFO] ResearchAgent: Starting (attempt 1/3)
+2026-03-06 08:01:14,218 [INFO] ResearchAgent: Perplexity research: Florida (13 categories)
+2026-03-06 08:01:17,382 [INFO] ResearchAgent: Query 'Florida mortgage rates today 2026 30-year fixed': 8 articles
+2026-03-06 08:01:19,921 [INFO] ResearchAgent: Query 'Florida HOA insurance property tax changes 2026': 8 articles
+2026-03-06 08:01:20,066 [INFO] ResearchAgent: Query 'Fed interest rate decision housing market Florida 2026': 6 articles
+2026-03-06 08:01:23,592 [INFO] ResearchAgent: Query 'Miami Florida real estate market 2026 prices inventory trend': 6 articles
+2026-03-06 08:01:24,644 [INFO] ResearchAgent: Query 'Florida real estate legislation new laws 2026': 8 articles
+2026-03-06 08:01:25,758 [INFO] ResearchAgent: Query 'Orlando housing market median price days on market 2026': 8 articles
+2026-03-06 08:01:26,048 [INFO] ResearchAgent: Query 'Orlando Florida real estate market 2026 prices inventory tre': 8 articles
+2026-03-06 08:01:29,784 [INFO] ResearchAgent: Query 'Tampa housing market median price days on market 2026': 8 articles
+2026-03-06 08:01:29,958 [INFO] ResearchAgent: Query 'Tampa Florida real estate market 2026 prices inventory trend': 5 articles
+2026-03-06 08:01:30,090 [INFO] ResearchAgent: Query 'Miami housing market median price days on market 2026': 9 articles
+2026-03-06 08:01:31,525 [INFO] ResearchAgent: Query 'Jacksonville housing market median price days on market 2026': 7 articles
+2026-03-06 08:01:35,126 [INFO] ResearchAgent: Query 'Jacksonville Florida real estate market 2026 prices inventor': 7 articles
+2026-03-06 08:01:37,022 [INFO] ResearchAgent: Query 'Fort Lauderdale housing market median price days on market 2': 7 articles
+2026-03-06 08:01:37,437 [INFO] ResearchAgent: Query 'Fort Lauderdale Florida real estate market 2026 prices inven': 8 articles
+2026-03-06 08:01:38,134 [INFO] ResearchAgent: Query 'Latin American buyers Florida real estate 2026': 9 articles
+2026-03-06 08:01:40,036 [INFO] ResearchAgent: Query 'international investors Miami real estate Colombia Venezuela': 8 articles
+2026-03-06 08:01:42,315 [INFO] ResearchAgent: Query 'South Florida luxury real estate $5M+ market 2026': 8 articles
+2026-03-06 08:01:43,573 [INFO] ResearchAgent: Query 'Florida new construction housing starts 2026': 8 articles
+2026-03-06 08:01:45,612 [INFO] ResearchAgent: Query 'Miami ultra-luxury properties sales 2026': 7 articles
+2026-03-06 08:01:48,090 [INFO] ResearchAgent: Query 'Florida new development pre-construction 2026': 8 articles
+2026-03-06 08:01:48,418 [INFO] ResearchAgent: Query 'Florida median home prices days on market statistics 2026': 5 articles
+2026-03-06 08:01:49,518 [INFO] ResearchAgent: Query 'Florida housing inventory levels prices 2026': 6 articles
+2026-03-06 08:01:52,115 [INFO] ResearchAgent: Query 'Florida economy housing market outlook 2026': 6 articles
+2026-03-06 08:01:52,518 [INFO] ResearchAgent: Query 'Florida real estate investment trends 2026': 6 articles
+2026-03-06 08:01:54,157 [INFO] ResearchAgent: Query 'Bitcoin crypto buyers real estate Florida Miami 2026': 6 articles
+2026-03-06 08:01:56,096 [INFO] ResearchAgent: Query 'cryptocurrency payment real estate property Florida BTC 2026': 6 articles
+2026-03-06 08:01:56,173 [INFO] ResearchAgent: Perplexity: 186 raw → 32 unique articles
+2026-03-06 08:01:56,173 [INFO] ResearchAgent: Completed in 41.95s
+2026-03-06 08:01:56,173 [INFO] Orchestrator: --- Phase 2: Analysis ---
+2026-03-06 08:01:56,173 [INFO] AnalysisAgent: Starting (attempt 1/3)
+2026-03-06 08:01:56,174 [INFO] AnalysisAgent: Analyzing 32 articles (of 32) + 6 scraped pages
+2026-03-06 08:03:21,387 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-03-06 08:03:21,397 [INFO] AnalysisAgent: Analysis complete: 12 articles selected, 30yr rate: 6.00%
+2026-03-06 08:03:21,398 [INFO] AnalysisAgent: Completed in 85.22s
+2026-03-06 08:03:21,398 [INFO] Orchestrator: --- Phase 3: Writing ---
+2026-03-06 08:03:21,398 [INFO] WritingAgent: Starting (attempt 1/3)
+2026-03-06 08:03:21,398 [INFO] WritingAgent: Writing newsletter with 12 stories
+2026-03-06 08:05:42,788 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-03-06 08:05:42,793 [INFO] WritingAgent: Writing response: 21908 chars
+2026-03-06 08:05:42,795 [INFO] WritingAgent: Parsed sections: ['HEADER', 'RESUMEN EJECUTIVO', 'HISTORIA_1', 'HISTORIA_2', 'HISTORIA_3', 'HISTORIA_4', 'HISTORIA_5', 'HISTORIA_6', 'MERCADO', 'INVERSION_LATINA', 'ESTRATEGIAS', 'RADAR', 'BTC_CRIPTO', 'FOOTER']
+2026-03-06 08:05:42,795 [INFO] WritingAgent: Completed in 141.40s
+2026-03-06 08:05:42,795 [INFO] Orchestrator: --- Phase 4: Editorial ---
+2026-03-06 08:05:42,795 [INFO] EditorialAgent: Starting (attempt 1/3)
+2026-03-06 08:05:42,795 [INFO] EditorialAgent: Editorial review: 21922 chars, 6 stories
+2026-03-06 08:08:11,645 [INFO] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-03-06 08:08:11,650 [INFO] EditorialAgent: Editorial response: 22415 chars
+2026-03-06 08:08:11,651 [INFO] EditorialAgent: Editorial complete: 16 Telegram messages
+2026-03-06 08:08:11,651 [INFO] EditorialAgent: Completed in 148.85s
+2026-03-06 08:08:11,651 [INFO] Orchestrator: --- Phase 5: Delivery ---
+2026-03-06 08:08:11,651 [INFO] DeliveryAgent: Starting (attempt 1/3)
+2026-03-06 08:08:11,651 [INFO] DeliveryAgent: Sending 16 messages to Telegram
+2026-03-06 08:08:11,651 [INFO] DeliveryAgent: Message 1/16 (179 chars)
+2026-03-06 08:10:13,369 [INFO] DeliveryAgent: Message 2/16 (692 chars)
+2026-03-06 08:12:14,081 [INFO] DeliveryAgent: Message 3/16 (1541 chars)
+2026-03-06 08:14:14,873 [INFO] DeliveryAgent: Message 4/16 (1697 chars)
+2026-03-06 08:16:15,955 [INFO] DeliveryAgent: Message 5/16 (1951 chars)
+2026-03-06 08:18:16,764 [INFO] DeliveryAgent: Message 6/16 (1895 chars)
+2026-03-06 08:20:17,872 [INFO] DeliveryAgent: Message 7/16 (2182 chars)
+2026-03-06 08:22:18,875 [INFO] DeliveryAgent: Message 8/16 (2106 chars)
+2026-03-06 08:24:19,902 [INFO] DeliveryAgent: Message 9/16 (712 chars)
+2026-03-06 08:26:20,688 [INFO] DeliveryAgent: Message 10/16 (1662 chars)
+2026-03-06 08:28:21,606 [INFO] DeliveryAgent: Message 11/16 (1251 chars)
+2026-03-06 08:30:22,364 [INFO] DeliveryAgent: Message 12/16 (1817 chars)
+2026-03-06 08:32:23,295 [INFO] DeliveryAgent: Message 13/16 (1357 chars)
+2026-03-06 08:34:24,101 [INFO] DeliveryAgent: Message 14/16 (1394 chars)
+2026-03-06 08:36:25,000 [INFO] DeliveryAgent: Message 15/16 (1204 chars)
+2026-03-06 08:38:25,883 [INFO] DeliveryAgent: Message 16/16 (202 chars)
+2026-03-06 08:38:27,739 [INFO] DeliveryAgent: Pinned message 162
+2026-03-06 08:38:27,740 [INFO] DeliveryAgent: Delivery complete: 16 sent, 0 failed
+2026-03-06 08:38:27,740 [INFO] DeliveryAgent: Completed in 1816.08s
+2026-03-06 08:38:27,740 [INFO] Orchestrator: ==================================================
+2026-03-06 08:38:27,740 [INFO] Orchestrator: Run complete: {'run_id': '20260306_080000', 'state': 'florida', 'scraped_pages': 6, 'articles_found': 32, 'articles_selected': 12, 'messages_sent': 16, 'messages_failed': 0, 'dry_run': False}
+2026-03-06 08:38:27,740 [INFO] Orchestrator: ==================================================
+2026-03-06 08:38:27,741 [INFO] scheduler.job: Scheduled pipeline completed: {'run_id': '20260306_080000', 'state': 'florida', 'scraped_pages': 6, 'articles_found': 32, 'articles_selected': 12, 'messages_sent': 16, 'messages_failed': 0, 'dry_run': False}
+2026-03-06 08:38:27,742 [INFO] apscheduler.executors.default: Job "Florida Realty Intel Daily Report (trigger: cron[day_of_week='mon-fri', hour='8', minute='0'], next run at: 2026-03-09 08:00:00 EDT)" executed successfully

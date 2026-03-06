@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  realty-intel:
+    build: .
+    container_name: realty-intel
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs

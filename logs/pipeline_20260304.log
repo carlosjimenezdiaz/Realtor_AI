@@ -1,0 +1,498 @@
+{"ts": "2026-03-04T20:16:03.997488+00:00", "level": "INFO", "logger": "main", "msg": "Starting pipeline in DRY-RUN mode (no Telegram delivery)"}
+{"ts": "2026-03-04T20:16:04.027902+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-04T20:16:04.027950+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "Pipeline run 20260304_151604 | State: FLORIDA"}
+{"ts": "2026-03-04T20:16:04.027974+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-04T20:16:04.027996+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 0: Firecrawl ---"}
+{"ts": "2026-03-04T20:16:04.028018+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-04T20:16:04.028041+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Firecrawl MCP: scraping 5 URLs"}
+{"ts": "2026-03-04T20:17:08.545564+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages?beta=true \"HTTP/1.1 200 OK\""}
+{"ts": "2026-03-04T20:17:08.580359+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Firecrawl MCP response: 9360 chars"}
+{"ts": "2026-03-04T20:17:08.581091+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Firecrawl MCP complete: 5 ok, 0 failed"}
+{"ts": "2026-03-04T20:17:08.581185+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Completed in 64.55s"}
+{"ts": "2026-03-04T20:17:08.581220+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 1: Research (Tavily MCP) ---"}
+{"ts": "2026-03-04T20:17:08.581267+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-04T20:17:08.581341+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Perplexity research: Florida (13 categories)"}
+{"ts": "2026-03-04T20:17:17.956130+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida mortgage rates today 2026 30-year fixed': 0 articles"}
+{"ts": "2026-03-04T20:17:19.899842+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Miami Florida real estate market 2026 prices inventory trend': 0 articles"}
+{"ts": "2026-03-04T20:17:22.017238+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Miami housing market median price days on market 2026': 0 articles"}
+{"ts": "2026-03-04T20:17:23.934003+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Fed interest rate decision housing market Florida 2026': 0 articles"}
+{"ts": "2026-03-04T20:17:25.068206+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida HOA insurance property tax changes 2026': 0 articles"}
+{"ts": "2026-03-04T20:17:26.999332+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida real estate legislation new laws 2026': 0 articles"}
+{"ts": "2026-03-04T20:17:32.382447+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Orlando Florida real estate market 2026 prices inventory tre': 0 articles"}
+{"ts": "2026-03-04T20:17:33.834158+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Orlando housing market median price days on market 2026': 0 articles"}
+{"ts": "2026-03-04T20:17:37.184028+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Tampa housing market median price days on market 2026': 0 articles"}
+{"ts": "2026-03-04T20:17:37.253140+00:00", "level": "WARNING", "logger": "ResearchAgent", "msg": "Query failed 'Fort Lauderdale Florida real estate market 2026 prices inven': 502 Server Error: Bad Gateway for url: https://api.perplexity.ai/chat/completions"}
+{"ts": "2026-03-04T20:17:37.264691+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Jacksonville Florida real estate market 2026 prices inventor': 7 articles"}
+{"ts": "2026-03-04T20:17:38.764435+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Tampa Florida real estate market 2026 prices inventory trend': 0 articles"}
+{"ts": "2026-03-04T20:17:41.385599+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Fort Lauderdale housing market median price days on market 2': 0 articles"}
+{"ts": "2026-03-04T20:17:43.011249+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Jacksonville housing market median price days on market 2026': 0 articles"}
+{"ts": "2026-03-04T20:17:52.299367+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Latin American buyers Florida real estate 2026': 0 articles"}
+{"ts": "2026-03-04T20:17:52.596536+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'international investors Miami real estate Colombia Venezuela': 0 articles"}
+{"ts": "2026-03-04T20:17:53.955422+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida new construction housing starts 2026': 0 articles"}
+{"ts": "2026-03-04T20:17:54.684831+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'South Florida luxury real estate $5M+ market 2026': 0 articles"}
+{"ts": "2026-03-04T20:17:55.915034+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Miami ultra-luxury properties sales 2026': 0 articles"}
+{"ts": "2026-03-04T20:18:05.954987+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida real estate investment trends 2026': 5 articles"}
+{"ts": "2026-03-04T20:18:08.714083+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida median home prices days on market statistics 2026': 0 articles"}
+{"ts": "2026-03-04T20:18:11.040996+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida new development pre-construction 2026': 0 articles"}
+{"ts": "2026-03-04T20:33:33.351600+00:00", "level": "INFO", "logger": "main", "msg": "Starting pipeline in DRY-RUN mode (no Telegram delivery)"}
+{"ts": "2026-03-04T20:33:33.378297+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-04T20:33:33.378340+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "Pipeline run 20260304_153333 | State: FLORIDA"}
+{"ts": "2026-03-04T20:33:33.378361+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-04T20:33:33.378379+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 0: Firecrawl ---"}
+{"ts": "2026-03-04T20:33:33.378399+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-04T20:33:33.378418+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Firecrawl MCP: scraping 5 URLs"}
+{"ts": "2026-03-04T20:34:44.852652+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages?beta=true \"HTTP/1.1 200 OK\""}
+{"ts": "2026-03-04T20:34:44.886105+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Firecrawl MCP response: 10031 chars"}
+{"ts": "2026-03-04T20:34:44.886729+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Firecrawl MCP complete: 5 ok, 0 failed"}
+{"ts": "2026-03-04T20:34:44.886828+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Completed in 71.51s"}
+{"ts": "2026-03-04T20:34:44.886873+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 1: Research (Tavily MCP) ---"}
+{"ts": "2026-03-04T20:34:44.886933+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-04T20:34:44.887040+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Perplexity research: Florida (13 categories)"}
+{"ts": "2026-03-04T20:34:51.157317+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida real estate legislation new laws 2026': 0 articles"}
+{"ts": "2026-03-04T20:34:53.832619+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida mortgage rates today 2026 30-year fixed': 0 articles"}
+{"ts": "2026-03-04T20:34:55.578870+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Fed interest rate decision housing market Florida 2026': 0 articles"}
+{"ts": "2026-03-04T20:34:56.751403+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Miami housing market median price days on market 2026': 0 articles"}
+{"ts": "2026-03-04T20:34:58.525960+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Miami Florida real estate market 2026 prices inventory trend': 0 articles"}
+{"ts": "2026-03-04T20:34:59.778942+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Orlando housing market median price days on market 2026': 0 articles"}
+{"ts": "2026-03-04T20:35:00.422023+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Orlando Florida real estate market 2026 prices inventory tre': 0 articles"}
+{"ts": "2026-03-04T20:35:01.035647+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida HOA insurance property tax changes 2026': 0 articles"}
+{"ts": "2026-03-04T20:35:06.205164+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Jacksonville Florida real estate market 2026 prices inventor': 0 articles"}
+{"ts": "2026-03-04T20:35:07.816230+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Tampa housing market median price days on market 2026': 0 articles"}
+{"ts": "2026-03-04T20:35:07.929601+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Tampa Florida real estate market 2026 prices inventory trend': 0 articles"}
+{"ts": "2026-03-04T20:35:09.965234+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Fort Lauderdale Florida real estate market 2026 prices inven': 0 articles"}
+{"ts": "2026-03-04T20:35:10.544522+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Jacksonville housing market median price days on market 2026': 0 articles"}
+{"ts": "2026-03-04T20:35:13.680751+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Latin American buyers Florida real estate 2026': 4 articles"}
+{"ts": "2026-03-04T20:35:15.921971+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Fort Lauderdale housing market median price days on market 2': 0 articles"}
+{"ts": "2026-03-04T20:35:21.343958+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida new development pre-construction 2026': 0 articles"}
+{"ts": "2026-03-04T20:35:25.847876+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Miami ultra-luxury properties sales 2026': 0 articles"}
+{"ts": "2026-03-04T20:35:25.999332+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'international investors Miami real estate Colombia Venezuela': 0 articles"}
+{"ts": "2026-03-04T20:35:26.416193+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida new construction housing starts 2026': 0 articles"}
+{"ts": "2026-03-04T20:35:27.998992+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'South Florida luxury real estate $5M+ market 2026': 0 articles"}
+{"ts": "2026-03-04T20:35:36.507766+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida housing inventory levels prices 2026': 0 articles"}
+{"ts": "2026-03-04T20:35:36.947047+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida economy housing market outlook 2026': 0 articles"}
+{"ts": "2026-03-04T20:35:37.039474+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida median home prices days on market statistics 2026': 0 articles"}
+{"ts": "2026-03-04T20:35:39.627728+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida real estate investment trends 2026': 0 articles"}
+{"ts": "2026-03-04T20:35:41.273247+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Bitcoin crypto buyers real estate Florida Miami 2026': 0 articles"}
+{"ts": "2026-03-04T20:35:57.880104+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'cryptocurrency payment real estate property Florida BTC 2026': 0 articles"}
+{"ts": "2026-03-04T20:35:57.882877+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Perplexity: 4 raw → 4 unique articles"}
+{"ts": "2026-03-04T20:35:57.883031+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Completed in 73.00s"}
+{"ts": "2026-03-04T20:35:57.883107+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 2: Analysis ---"}
+{"ts": "2026-03-04T20:35:57.883168+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-04T20:35:57.883318+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Analyzing 4 articles (of 4) + 5 scraped pages"}
+{"ts": "2026-03-04T20:37:27.114469+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages \"HTTP/1.1 200 OK\""}
+{"ts": "2026-03-04T20:37:27.143268+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Analysis complete: 12 articles selected, 30yr rate: 5.98%"}
+{"ts": "2026-03-04T20:37:27.143437+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Completed in 89.26s"}
+{"ts": "2026-03-04T20:37:27.143509+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 3: Writing ---"}
+{"ts": "2026-03-04T20:37:27.143561+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-04T20:37:27.143836+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Writing newsletter with 12 stories"}
+{"ts": "2026-03-04T20:44:17.454671+00:00", "level": "INFO", "logger": "main", "msg": "Starting pipeline in DRY-RUN mode (no Telegram delivery)"}
+{"ts": "2026-03-04T20:44:17.481034+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-04T20:44:17.481076+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "Pipeline run 20260304_154417 | State: FLORIDA"}
+{"ts": "2026-03-04T20:44:17.481099+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-04T20:44:17.481119+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 0: Firecrawl ---"}
+{"ts": "2026-03-04T20:44:17.481143+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-04T20:44:17.481165+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Firecrawl MCP: scraping 5 URLs"}
+{"ts": "2026-03-04T20:45:40.719204+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages?beta=true \"HTTP/1.1 200 OK\""}
+{"ts": "2026-03-04T20:45:40.755437+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Firecrawl MCP response: 12887 chars"}
+{"ts": "2026-03-04T20:45:40.755797+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Firecrawl MCP complete: 5 ok, 0 failed"}
+{"ts": "2026-03-04T20:45:40.755866+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Completed in 83.27s"}
+{"ts": "2026-03-04T20:45:40.755904+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 1: Research (Tavily MCP) ---"}
+{"ts": "2026-03-04T20:45:40.755950+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-04T20:45:40.756048+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Perplexity research: Florida (13 categories)"}
+{"ts": "2026-03-04T20:45:44.738413+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida mortgage rates today 2026 30-year fixed': 6 articles"}
+{"ts": "2026-03-04T20:45:46.231325+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Fed interest rate decision housing market Florida 2026': 5 articles"}
+{"ts": "2026-03-04T20:45:47.307192+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida HOA insurance property tax changes 2026': 7 articles"}
+{"ts": "2026-03-04T20:45:47.532241+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Miami Florida real estate market 2026 prices inventory trend': 8 articles"}
+{"ts": "2026-03-04T20:45:50.176721+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida real estate legislation new laws 2026': 7 articles"}
+{"ts": "2026-03-04T20:45:50.431830+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Miami housing market median price days on market 2026': 9 articles"}
+{"ts": "2026-03-04T20:45:53.817689+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Orlando housing market median price days on market 2026': 8 articles"}
+{"ts": "2026-03-04T20:45:54.239360+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Tampa Florida real estate market 2026 prices inventory trend': 7 articles"}
+{"ts": "2026-03-04T20:45:55.864133+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Tampa housing market median price days on market 2026': 9 articles"}
+{"ts": "2026-03-04T20:45:56.768868+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Orlando Florida real estate market 2026 prices inventory tre': 6 articles"}
+{"ts": "2026-03-04T20:45:58.478253+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Jacksonville Florida real estate market 2026 prices inventor': 7 articles"}
+{"ts": "2026-03-04T20:45:59.726525+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Fort Lauderdale housing market median price days on market 2': 10 articles"}
+{"ts": "2026-03-04T20:46:00.156070+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Jacksonville housing market median price days on market 2026': 9 articles"}
+{"ts": "2026-03-04T20:46:02.830048+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Fort Lauderdale Florida real estate market 2026 prices inven': 8 articles"}
+{"ts": "2026-03-04T20:46:03.136722+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Latin American buyers Florida real estate 2026': 9 articles"}
+{"ts": "2026-03-04T20:46:05.104737+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Miami ultra-luxury properties sales 2026': 7 articles"}
+{"ts": "2026-03-04T20:46:05.300765+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'international investors Miami real estate Colombia Venezuela': 8 articles"}
+{"ts": "2026-03-04T20:46:09.300168+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida new construction housing starts 2026': 8 articles"}
+{"ts": "2026-03-04T20:46:10.217867+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida new development pre-construction 2026': 9 articles"}
+{"ts": "2026-03-04T20:46:11.587742+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida housing inventory levels prices 2026': 6 articles"}
+{"ts": "2026-03-04T20:46:11.921010+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'South Florida luxury real estate $5M+ market 2026': 8 articles"}
+{"ts": "2026-03-04T20:46:14.390107+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida median home prices days on market statistics 2026': 8 articles"}
+{"ts": "2026-03-04T20:46:17.205835+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida real estate investment trends 2026': 8 articles"}
+{"ts": "2026-03-04T20:46:17.226971+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida economy housing market outlook 2026': 7 articles"}
+{"ts": "2026-03-04T20:46:18.549351+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Bitcoin crypto buyers real estate Florida Miami 2026': 6 articles"}
+{"ts": "2026-03-04T20:46:20.650867+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'cryptocurrency payment real estate property Florida BTC 2026': 8 articles"}
+{"ts": "2026-03-04T20:46:21.329341+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Perplexity: 198 raw → 131 unique articles"}
+{"ts": "2026-03-04T20:46:21.329594+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Completed in 40.57s"}
+{"ts": "2026-03-04T20:46:21.329635+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 2: Analysis ---"}
+{"ts": "2026-03-04T20:46:21.329666+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-04T20:46:21.329812+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Analyzing 40 articles (of 131) + 5 scraped pages"}
+{"ts": "2026-03-04T20:47:45.475588+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages \"HTTP/1.1 200 OK\""}
+{"ts": "2026-03-04T20:47:45.504889+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Analysis complete: 12 articles selected, 30yr rate: 5.98%"}
+{"ts": "2026-03-04T20:47:45.504995+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Completed in 84.17s"}
+{"ts": "2026-03-04T20:47:45.505052+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 3: Writing ---"}
+{"ts": "2026-03-04T20:47:45.505104+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-04T20:47:45.505430+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Writing newsletter with 12 stories"}
+{"ts": "2026-03-04T20:50:12.083514+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages \"HTTP/1.1 200 OK\""}
+{"ts": "2026-03-04T20:50:12.101464+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Writing response: 22288 chars"}
+{"ts": "2026-03-04T20:50:12.101955+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Parsed sections: ['HEADER', 'RESUMEN EJECUTIVO', 'HISTORIA_1', 'HISTORIA_2', 'HISTORIA_3', 'HISTORIA_4', 'HISTORIA_5', 'HISTORIA_6', 'MERCADO', 'INVERSION_LATINA', 'ESTRATEGIAS', 'RADAR', 'BTC_CRIPTO', 'FOOTER']"}
+{"ts": "2026-03-04T20:50:12.102225+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Completed in 146.60s"}
+{"ts": "2026-03-04T20:50:12.102298+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 4: Editorial ---"}
+{"ts": "2026-03-04T20:50:12.102407+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-04T20:50:12.102552+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Editorial review: 22302 chars, 6 stories"}
+{"ts": "2026-03-04T20:52:35.878880+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages \"HTTP/1.1 200 OK\""}
+{"ts": "2026-03-04T20:52:35.881334+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Editorial response: 21770 chars"}
+{"ts": "2026-03-04T20:52:35.881715+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Editorial complete: 16 Telegram messages"}
+{"ts": "2026-03-04T20:52:35.881810+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Completed in 143.78s"}
+{"ts": "2026-03-04T20:52:35.881903+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 5: SKIPPED (dry-run mode) ---"}
+{"ts": "2026-03-04T20:52:35.882252+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-04T20:52:35.882326+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "Run complete: {'run_id': '20260304_154417', 'state': 'florida', 'scraped_pages': 5, 'articles_found': 131, 'articles_selected': 12, 'messages_sent': 0, 'messages_failed': 0, 'dry_run': True}"}
+{"ts": "2026-03-04T20:52:35.882381+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-04T20:52:35.882799+00:00", "level": "INFO", "logger": "main", "msg": "Pipeline finished successfully: {'run_id': '20260304_154417', 'state': 'florida', 'scraped_pages': 5, 'articles_found': 131, 'articles_selected': 12, 'messages_sent': 0, 'messages_failed': 0, 'dry_run': True}"}
+{"ts": "2026-03-04T20:59:19.184591+00:00", "level": "INFO", "logger": "main", "msg": "Starting pipeline in PRODUCTION mode"}
+{"ts": "2026-03-04T20:59:19.211563+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-04T20:59:19.211616+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "Pipeline run 20260304_155919 | State: FLORIDA"}
+{"ts": "2026-03-04T20:59:19.211641+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-04T20:59:19.211662+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 0: Firecrawl ---"}
+{"ts": "2026-03-04T20:59:19.211696+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-04T20:59:19.211719+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Firecrawl MCP: scraping 5 URLs"}
+{"ts": "2026-03-04T21:00:34.381018+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages?beta=true \"HTTP/1.1 200 OK\""}
+{"ts": "2026-03-04T21:00:34.416725+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Firecrawl MCP response: 11187 chars"}
+{"ts": "2026-03-04T21:00:34.417182+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Firecrawl MCP complete: 5 ok, 0 failed"}
+{"ts": "2026-03-04T21:00:34.417275+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Completed in 75.21s"}
+{"ts": "2026-03-04T21:00:34.417321+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 1: Research (Tavily MCP) ---"}
+{"ts": "2026-03-04T21:00:34.417367+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-04T21:00:34.417470+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Perplexity research: Florida (13 categories)"}
+{"ts": "2026-03-04T21:00:40.584839+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida mortgage rates today 2026 30-year fixed': 6 articles"}
+{"ts": "2026-03-04T21:00:41.492006+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Fed interest rate decision housing market Florida 2026': 6 articles"}
+{"ts": "2026-03-04T21:00:42.455417+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida HOA insurance property tax changes 2026': 8 articles"}
+{"ts": "2026-03-04T21:00:42.869173+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Miami Florida real estate market 2026 prices inventory trend': 8 articles"}
+{"ts": "2026-03-04T21:00:46.437307+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida real estate legislation new laws 2026': 8 articles"}
+{"ts": "2026-03-04T21:00:47.786561+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Orlando housing market median price days on market 2026': 9 articles"}
+{"ts": "2026-03-04T21:00:47.811651+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Miami housing market median price days on market 2026': 9 articles"}
+{"ts": "2026-03-04T21:00:50.113665+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Tampa Florida real estate market 2026 prices inventory trend': 7 articles"}
+{"ts": "2026-03-04T21:00:51.313595+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Orlando Florida real estate market 2026 prices inventory tre': 7 articles"}
+{"ts": "2026-03-04T21:00:54.510290+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Tampa housing market median price days on market 2026': 8 articles"}
+{"ts": "2026-03-04T21:00:55.437558+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Jacksonville housing market median price days on market 2026': 9 articles"}
+{"ts": "2026-03-04T21:00:56.403761+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Jacksonville Florida real estate market 2026 prices inventor': 7 articles"}
+{"ts": "2026-03-04T21:00:57.572241+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Fort Lauderdale housing market median price days on market 2': 9 articles"}
+{"ts": "2026-03-04T21:00:59.637549+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Fort Lauderdale Florida real estate market 2026 prices inven': 8 articles"}
+{"ts": "2026-03-04T21:01:01.646233+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'international investors Miami real estate Colombia Venezuela': 8 articles"}
+{"ts": "2026-03-04T21:01:03.077451+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Latin American buyers Florida real estate 2026': 9 articles"}
+{"ts": "2026-03-04T21:01:03.479301+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Miami ultra-luxury properties sales 2026': 8 articles"}
+{"ts": "2026-03-04T21:01:06.405149+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'South Florida luxury real estate $5M+ market 2026': 9 articles"}
+{"ts": "2026-03-04T21:01:07.489625+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida new construction housing starts 2026': 9 articles"}
+{"ts": "2026-03-04T21:01:08.879702+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida median home prices days on market statistics 2026': 7 articles"}
+{"ts": "2026-03-04T21:01:10.581768+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida housing inventory levels prices 2026': 7 articles"}
+{"ts": "2026-03-04T21:01:13.299848+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida new development pre-construction 2026': 8 articles"}
+{"ts": "2026-03-04T21:01:14.228680+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida economy housing market outlook 2026': 7 articles"}
+{"ts": "2026-03-04T21:01:17.281783+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida real estate investment trends 2026': 7 articles"}
+{"ts": "2026-03-04T21:01:17.892556+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'cryptocurrency payment real estate property Florida BTC 2026': 8 articles"}
+{"ts": "2026-03-04T21:01:21.270269+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Bitcoin crypto buyers real estate Florida Miami 2026': 6 articles"}
+{"ts": "2026-03-04T21:01:21.457547+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Perplexity: 202 raw → 67 unique articles"}
+{"ts": "2026-03-04T21:01:21.457709+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Completed in 47.04s"}
+{"ts": "2026-03-04T21:01:21.457739+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 2: Analysis ---"}
+{"ts": "2026-03-04T21:01:21.457768+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-04T21:01:21.457885+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Analyzing 40 articles (of 67) + 5 scraped pages"}
+{"ts": "2026-03-04T21:02:40.594801+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages \"HTTP/1.1 200 OK\""}
+{"ts": "2026-03-04T21:02:40.617891+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Analysis complete: 12 articles selected, 30yr rate: 5.98%"}
+{"ts": "2026-03-04T21:02:40.617977+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Completed in 79.16s"}
+{"ts": "2026-03-04T21:02:40.618013+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 3: Writing ---"}
+{"ts": "2026-03-04T21:02:40.618049+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-04T21:02:40.618236+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Writing newsletter with 12 stories"}
+{"ts": "2026-03-04T21:05:17.217767+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages \"HTTP/1.1 200 OK\""}
+{"ts": "2026-03-04T21:05:17.222124+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Writing response: 23528 chars"}
+{"ts": "2026-03-04T21:05:17.222553+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Parsed sections: ['HEADER', 'RESUMEN EJECUTIVO', 'HISTORIA_1', 'HISTORIA_2', 'HISTORIA_3', 'HISTORIA_4', 'HISTORIA_5', 'HISTORIA_6', 'MERCADO', 'INVERSION_LATINA', 'ESTRATEGIAS', 'RADAR', 'BTC_CRIPTO', 'FOOTER']"}
+{"ts": "2026-03-04T21:05:17.222942+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Completed in 156.60s"}
+{"ts": "2026-03-04T21:05:17.223114+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 4: Editorial ---"}
+{"ts": "2026-03-04T21:05:17.223249+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-04T21:05:17.223427+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Editorial review: 23542 chars, 6 stories"}
+{"ts": "2026-03-04T21:07:54.154769+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages \"HTTP/1.1 200 OK\""}
+{"ts": "2026-03-04T21:07:54.157261+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Editorial response: 23444 chars"}
+{"ts": "2026-03-04T21:07:54.157673+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Editorial complete: 16 Telegram messages"}
+{"ts": "2026-03-04T21:07:54.157804+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Completed in 156.93s"}
+{"ts": "2026-03-04T21:07:54.157898+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 5: Delivery ---"}
+{"ts": "2026-03-04T21:07:54.157995+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-04T21:07:54.158070+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Sending 16 messages to Telegram"}
+{"ts": "2026-03-04T21:07:54.158140+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 1/16 (181 chars)"}
+{"ts": "2026-03-04T21:09:55.110094+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 2/16 (852 chars)"}
+{"ts": "2026-03-04T21:11:58.731282+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 3/16 (1829 chars)"}
+{"ts": "2026-03-04T21:14:00.689124+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 4/16 (1919 chars)"}
+{"ts": "2026-03-04T21:16:02.530224+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 5/16 (1930 chars)"}
+{"ts": "2026-03-04T21:18:04.323376+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 6/16 (1997 chars)"}
+{"ts": "2026-03-04T21:20:05.144452+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 7/16 (2048 chars)"}
+{"ts": "2026-03-04T21:22:07.131006+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 8/16 (2370 chars)"}
+{"ts": "2026-03-04T21:24:07.910995+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 9/16 (811 chars)"}
+{"ts": "2026-03-04T21:26:09.739933+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 10/16 (1746 chars)"}
+{"ts": "2026-03-04T21:28:10.563207+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 11/16 (548 chars)"}
+{"ts": "2026-03-04T21:30:12.506709+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 12/16 (2287 chars)"}
+{"ts": "2026-03-04T21:32:13.299964+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 13/16 (1430 chars)"}
+{"ts": "2026-03-04T21:34:14.215948+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 14/16 (1481 chars)"}
+{"ts": "2026-03-04T21:36:15.047938+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 15/16 (1237 chars)"}
+{"ts": "2026-03-04T21:38:16.111488+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 16/16 (202 chars)"}
+{"ts": "2026-03-04T21:38:18.174740+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Pinned message 128"}
+{"ts": "2026-03-04T21:38:18.174942+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Delivery complete: 16 sent, 0 failed"}
+{"ts": "2026-03-04T21:38:18.175110+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Completed in 1824.01s"}
+{"ts": "2026-03-04T21:38:18.175288+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-04T21:38:18.175380+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "Run complete: {'run_id': '20260304_155919', 'state': 'florida', 'scraped_pages': 5, 'articles_found': 67, 'articles_selected': 12, 'messages_sent': 16, 'messages_failed': 0, 'dry_run': False}"}
+{"ts": "2026-03-04T21:38:18.175443+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-04T21:38:18.176220+00:00", "level": "INFO", "logger": "main", "msg": "Pipeline finished successfully: {'run_id': '20260304_155919', 'state': 'florida', 'scraped_pages': 5, 'articles_found': 67, 'articles_selected': 12, 'messages_sent': 16, 'messages_failed': 0, 'dry_run': False}"}
+{"ts": "2026-03-04T22:11:01.451206+00:00", "level": "INFO", "logger": "main", "msg": "Starting pipeline in DRY-RUN mode (no Telegram delivery)"}
+{"ts": "2026-03-04T22:11:01.482315+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-04T22:11:01.482367+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "Pipeline run 20260304_171101 | State: FLORIDA"}
+{"ts": "2026-03-04T22:11:01.482391+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-04T22:11:01.482412+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 0: Firecrawl ---"}
+{"ts": "2026-03-04T22:11:01.482437+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-04T22:11:01.482461+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Firecrawl MCP: scraping 6 URLs"}
+{"ts": "2026-03-04T22:16:08.466973+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages?beta=true \"HTTP/1.1 400 Bad Request\""}
+{"ts": "2026-03-04T22:16:08.469888+00:00", "level": "WARNING", "logger": "FirecrawlAgent", "msg": "Firecrawl MCP failed (Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Connection to MCP server timed out. The server may be unavailable or unresponsive.'}, 'request_id': 'req_011CYiohs7UVYf1oqCAYbyZS'}). Falling back to SDK."}
+{"ts": "2026-03-04T22:16:09.581127+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "SDK scraped 'Florida Realtors': 1834 chars"}
+{"ts": "2026-03-04T22:16:09.799026+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "SDK scraped 'Freddie Mac PMMS': 8000 chars"}
+{"ts": "2026-03-04T22:16:09.925832+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "SDK scraped 'Zillow Research': 4003 chars"}
+{"ts": "2026-03-04T22:16:10.329843+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "SDK scraped 'NAR Research': 8000 chars"}
+{"ts": "2026-03-04T22:16:10.552066+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "SDK scraped 'Yahoo Finance BTC': 8000 chars"}
+{"ts": "2026-03-04T22:16:11.222822+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "SDK scraped 'Redfin Data Center': 6008 chars"}
+{"ts": "2026-03-04T22:16:11.223434+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Completed in 309.74s"}
+{"ts": "2026-03-04T22:16:11.223580+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 1: Research (Tavily MCP) ---"}
+{"ts": "2026-03-04T22:16:11.223726+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-04T22:16:11.223921+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Perplexity research: Florida (13 categories)"}
+{"ts": "2026-03-04T22:16:15.273122+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida mortgage rates today 2026 30-year fixed': 8 articles"}
+{"ts": "2026-03-04T22:16:15.535755+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Fed interest rate decision housing market Florida 2026': 5 articles"}
+{"ts": "2026-03-04T22:16:17.369079+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida HOA insurance property tax changes 2026': 7 articles"}
+{"ts": "2026-03-04T22:16:18.195328+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida real estate legislation new laws 2026': 7 articles"}
+{"ts": "2026-03-04T22:16:20.516436+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Miami housing market median price days on market 2026': 9 articles"}
+{"ts": "2026-03-04T22:16:21.175581+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Miami Florida real estate market 2026 prices inventory trend': 8 articles"}
+{"ts": "2026-03-04T22:16:22.289110+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Orlando housing market median price days on market 2026': 8 articles"}
+{"ts": "2026-03-04T22:16:23.431038+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Orlando Florida real estate market 2026 prices inventory tre': 7 articles"}
+{"ts": "2026-03-04T22:16:25.239465+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Tampa housing market median price days on market 2026': 8 articles"}
+{"ts": "2026-03-04T22:16:26.536662+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Tampa Florida real estate market 2026 prices inventory trend': 5 articles"}
+{"ts": "2026-03-04T22:16:26.895162+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Jacksonville Florida real estate market 2026 prices inventor': 7 articles"}
+{"ts": "2026-03-04T22:16:29.860016+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Fort Lauderdale Florida real estate market 2026 prices inven': 8 articles"}
+{"ts": "2026-03-04T22:16:30.486708+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Jacksonville housing market median price days on market 2026': 8 articles"}
+{"ts": "2026-03-04T22:16:30.676799+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Fort Lauderdale housing market median price days on market 2': 10 articles"}
+{"ts": "2026-03-04T22:16:31.548487+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Latin American buyers Florida real estate 2026': 8 articles"}
+{"ts": "2026-03-04T22:16:33.277365+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'international investors Miami real estate Colombia Venezuela': 8 articles"}
+{"ts": "2026-03-04T22:16:36.125444+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida new construction housing starts 2026': 8 articles"}
+{"ts": "2026-03-04T22:16:37.538611+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida housing inventory levels prices 2026': 6 articles"}
+{"ts": "2026-03-04T22:16:38.354600+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'South Florida luxury real estate $5M+ market 2026': 9 articles"}
+{"ts": "2026-03-04T22:16:39.458632+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida new development pre-construction 2026': 8 articles"}
+{"ts": "2026-03-04T22:16:41.358341+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Miami ultra-luxury properties sales 2026': 7 articles"}
+{"ts": "2026-03-04T22:16:41.887172+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida median home prices days on market statistics 2026': 9 articles"}
+{"ts": "2026-03-04T22:16:43.417995+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida economy housing market outlook 2026': 7 articles"}
+{"ts": "2026-03-04T22:16:45.577836+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida real estate investment trends 2026': 6 articles"}
+{"ts": "2026-03-04T22:16:47.474398+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Bitcoin crypto buyers real estate Florida Miami 2026': 6 articles"}
+{"ts": "2026-03-04T22:16:48.434786+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'cryptocurrency payment real estate property Florida BTC 2026': 7 articles"}
+{"ts": "2026-03-04T22:16:48.482485+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Perplexity: 194 raw → 20 unique articles"}
+{"ts": "2026-03-04T22:16:48.482637+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Completed in 37.26s"}
+{"ts": "2026-03-04T22:16:48.482675+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 2: Analysis ---"}
+{"ts": "2026-03-04T22:16:48.482710+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-04T22:16:48.482813+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Analyzing 20 articles (of 20) + 6 scraped pages"}
+{"ts": "2026-03-04T22:18:09.100646+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages \"HTTP/1.1 200 OK\""}
+{"ts": "2026-03-04T22:18:09.131020+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Analysis complete: 12 articles selected, 30yr rate: 5.98% (nacional Freddie Mac 26-feb-2026) / 5.875% (Florida, 3-mar-2026)"}
+{"ts": "2026-03-04T22:18:09.131111+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Completed in 80.65s"}
+{"ts": "2026-03-04T22:18:09.131158+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 3: Writing ---"}
+{"ts": "2026-03-04T22:18:09.131203+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-04T22:18:09.131436+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Writing newsletter with 12 stories"}
+{"ts": "2026-03-04T22:20:24.375540+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages \"HTTP/1.1 200 OK\""}
+{"ts": "2026-03-04T22:20:24.381806+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Writing response: 20767 chars"}
+{"ts": "2026-03-04T22:20:24.382484+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Parsed sections: ['HEADER', 'RESUMEN EJECUTIVO', 'HISTORIA_1', 'HISTORIA_2', 'HISTORIA_3', 'HISTORIA_4', 'HISTORIA_5', 'HISTORIA_6', 'MERCADO', 'INVERSION_LATINA', 'ESTRATEGIAS', 'RADAR', 'BTC_CRIPTO', 'FOOTER']"}
+{"ts": "2026-03-04T22:20:24.382867+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Completed in 135.25s"}
+{"ts": "2026-03-04T22:20:24.382982+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 4: Editorial ---"}
+{"ts": "2026-03-04T22:20:24.383132+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-04T22:20:24.383267+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Editorial review: 20781 chars, 6 stories"}
+{"ts": "2026-03-04T22:22:39.429943+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages \"HTTP/1.1 200 OK\""}
+{"ts": "2026-03-04T22:22:39.434872+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Editorial response: 20941 chars"}
+{"ts": "2026-03-04T22:22:39.435287+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Editorial complete: 16 Telegram messages"}
+{"ts": "2026-03-04T22:22:39.435391+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Completed in 135.05s"}
+{"ts": "2026-03-04T22:22:39.435461+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 5: SKIPPED (dry-run mode) ---"}
+{"ts": "2026-03-04T22:22:39.437042+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-04T22:22:39.437191+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "Run complete: {'run_id': '20260304_171101', 'state': 'florida', 'scraped_pages': 6, 'articles_found': 20, 'articles_selected': 12, 'messages_sent': 0, 'messages_failed': 0, 'dry_run': True}"}
+{"ts": "2026-03-04T22:22:39.437265+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-04T22:22:39.437619+00:00", "level": "INFO", "logger": "main", "msg": "Pipeline finished successfully: {'run_id': '20260304_171101', 'state': 'florida', 'scraped_pages': 6, 'articles_found': 20, 'articles_selected': 12, 'messages_sent': 0, 'messages_failed': 0, 'dry_run': True}"}
+{"ts": "2026-03-04T22:27:09.266379+00:00", "level": "INFO", "logger": "apscheduler.scheduler", "msg": "Adding job tentatively -- it will be properly scheduled when the scheduler starts"}
+{"ts": "2026-03-04T22:27:09.268456+00:00", "level": "INFO", "logger": "scheduler", "msg": "Scheduler started for Florida Realty Intel\n  Schedule: Mon-Fri at 08:00 America/New_York\n  Waiting for next scheduled run..."}
+{"ts": "2026-03-04T22:27:09.268724+00:00", "level": "INFO", "logger": "apscheduler.scheduler", "msg": "Added job \"Florida Realty Intel Daily Report\" to job store \"default\""}
+{"ts": "2026-03-04T22:27:09.268785+00:00", "level": "INFO", "logger": "apscheduler.scheduler", "msg": "Scheduler started"}
+{"ts": "2026-03-05T13:00:00.322735+00:00", "level": "INFO", "logger": "apscheduler.executors.default", "msg": "Running job \"Florida Realty Intel Daily Report (trigger: cron[day_of_week='mon-fri', hour='8', minute='0'], next run at: 2026-03-06 08:00:00 EST)\" (scheduled at 2026-03-05 08:00:00-05:00)"}
+{"ts": "2026-03-05T13:00:00.323779+00:00", "level": "INFO", "logger": "scheduler.job", "msg": "Scheduled pipeline starting..."}
+{"ts": "2026-03-05T13:00:00.385842+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-05T13:00:00.385880+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "Pipeline run 20260305_080000 | State: FLORIDA"}
+{"ts": "2026-03-05T13:00:00.385905+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-05T13:00:00.385927+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 0: Firecrawl ---"}
+{"ts": "2026-03-05T13:00:00.385959+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-05T13:00:00.385983+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Firecrawl MCP: scraping 6 URLs"}
+{"ts": "2026-03-05T13:01:04.493458+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages?beta=true \"HTTP/1.1 200 OK\""}
+{"ts": "2026-03-05T13:01:04.564483+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Firecrawl MCP response: 7750 chars"}
+{"ts": "2026-03-05T13:01:04.564975+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Firecrawl MCP complete: 5 ok, 1 failed"}
+{"ts": "2026-03-05T13:01:04.565146+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Completed in 64.18s"}
+{"ts": "2026-03-05T13:01:04.565187+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 1: Research (Tavily MCP) ---"}
+{"ts": "2026-03-05T13:01:04.565228+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-05T13:01:04.565289+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Perplexity research: Florida (13 categories)"}
+{"ts": "2026-03-05T13:01:09.979184+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida mortgage rates today 2026 30-year fixed': 7 articles"}
+{"ts": "2026-03-05T13:01:12.672427+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Fed interest rate decision housing market Florida 2026': 7 articles"}
+{"ts": "2026-03-05T13:01:12.709891+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida HOA insurance property tax changes 2026': 7 articles"}
+{"ts": "2026-03-05T13:01:14.228065+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Miami Florida real estate market 2026 prices inventory trend': 7 articles"}
+{"ts": "2026-03-05T13:01:14.228311+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida real estate legislation new laws 2026': 8 articles"}
+{"ts": "2026-03-05T13:01:15.763626+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Miami housing market median price days on market 2026': 9 articles"}
+{"ts": "2026-03-05T13:01:17.792750+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Orlando housing market median price days on market 2026': 8 articles"}
+{"ts": "2026-03-05T13:01:19.637000+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Tampa housing market median price days on market 2026': 7 articles"}
+{"ts": "2026-03-05T13:01:20.558998+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Orlando Florida real estate market 2026 prices inventory tre': 8 articles"}
+{"ts": "2026-03-05T13:01:22.881675+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Jacksonville housing market median price days on market 2026': 8 articles"}
+{"ts": "2026-03-05T13:01:24.133810+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Jacksonville Florida real estate market 2026 prices inventor': 7 articles"}
+{"ts": "2026-03-05T13:01:25.114215+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Tampa Florida real estate market 2026 prices inventory trend': 6 articles"}
+{"ts": "2026-03-05T13:01:26.209323+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Fort Lauderdale housing market median price days on market 2': 10 articles"}
+{"ts": "2026-03-05T13:01:29.024617+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Fort Lauderdale Florida real estate market 2026 prices inven': 9 articles"}
+{"ts": "2026-03-05T13:01:29.473645+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'international investors Miami real estate Colombia Venezuela': 8 articles"}
+{"ts": "2026-03-05T13:01:30.902200+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Latin American buyers Florida real estate 2026': 9 articles"}
+{"ts": "2026-03-05T13:01:35.235486+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida new construction housing starts 2026': 9 articles"}
+{"ts": "2026-03-05T13:01:36.810090+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'South Florida luxury real estate $5M+ market 2026': 9 articles"}
+{"ts": "2026-03-05T13:01:36.922378+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Miami ultra-luxury properties sales 2026': 8 articles"}
+{"ts": "2026-03-05T13:01:37.821667+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida new development pre-construction 2026': 7 articles"}
+{"ts": "2026-03-05T13:01:38.590881+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida housing inventory levels prices 2026': 7 articles"}
+{"ts": "2026-03-05T13:01:42.560092+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida median home prices days on market statistics 2026': 7 articles"}
+{"ts": "2026-03-05T13:01:45.562168+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida real estate investment trends 2026': 6 articles"}
+{"ts": "2026-03-05T13:01:45.562335+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida economy housing market outlook 2026': 7 articles"}
+{"ts": "2026-03-05T13:01:46.235754+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Bitcoin crypto buyers real estate Florida Miami 2026': 6 articles"}
+{"ts": "2026-03-05T13:01:47.659863+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'cryptocurrency payment real estate property Florida BTC 2026': 7 articles"}
+{"ts": "2026-03-05T13:01:47.726686+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Perplexity: 198 raw → 29 unique articles"}
+{"ts": "2026-03-05T13:01:47.726814+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Completed in 43.16s"}
+{"ts": "2026-03-05T13:01:47.726841+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 2: Analysis ---"}
+{"ts": "2026-03-05T13:01:47.726868+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-05T13:01:47.726985+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Analyzing 29 articles (of 29) + 5 scraped pages"}
+{"ts": "2026-03-05T13:03:15.423360+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages \"HTTP/1.1 200 OK\""}
+{"ts": "2026-03-05T13:03:15.452172+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Analysis complete: 12 articles selected, 30yr rate: 5.975%"}
+{"ts": "2026-03-05T13:03:15.452278+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Completed in 87.72s"}
+{"ts": "2026-03-05T13:03:15.452340+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 3: Writing ---"}
+{"ts": "2026-03-05T13:03:15.452397+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-05T13:03:15.452716+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Writing newsletter with 12 stories"}
+{"ts": "2026-03-05T13:05:42.023413+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages \"HTTP/1.1 200 OK\""}
+{"ts": "2026-03-05T13:05:42.026375+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Writing response: 22585 chars"}
+{"ts": "2026-03-05T13:05:42.026771+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Parsed sections: ['HEADER', 'RESUMEN EJECUTIVO', 'HISTORIA_1', 'HISTORIA_2', 'HISTORIA_3', 'HISTORIA_4', 'HISTORIA_5', 'HISTORIA_6', 'MERCADO', 'INVERSION_LATINA', 'ESTRATEGIAS', 'RADAR', 'BTC_CRIPTO', 'FOOTER']"}
+{"ts": "2026-03-05T13:05:42.026942+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Completed in 146.57s"}
+{"ts": "2026-03-05T13:05:42.027016+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 4: Editorial ---"}
+{"ts": "2026-03-05T13:05:42.027102+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-05T13:05:42.027199+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Editorial review: 22599 chars, 6 stories"}
+{"ts": "2026-03-05T13:08:10.271374+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages \"HTTP/1.1 200 OK\""}
+{"ts": "2026-03-05T13:08:10.274013+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Editorial response: 22724 chars"}
+{"ts": "2026-03-05T13:08:10.274417+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Editorial complete: 16 Telegram messages"}
+{"ts": "2026-03-05T13:08:10.274517+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Completed in 148.25s"}
+{"ts": "2026-03-05T13:08:10.274594+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 5: Delivery ---"}
+{"ts": "2026-03-05T13:08:10.274677+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-05T13:08:10.274742+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Sending 16 messages to Telegram"}
+{"ts": "2026-03-05T13:08:10.274803+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 1/16 (178 chars)"}
+{"ts": "2026-03-05T13:10:11.210871+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 2/16 (841 chars)"}
+{"ts": "2026-03-05T13:12:12.051401+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 3/16 (1829 chars)"}
+{"ts": "2026-03-05T13:14:12.919390+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 4/16 (1754 chars)"}
+{"ts": "2026-03-05T13:16:13.724354+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 5/16 (1902 chars)"}
+{"ts": "2026-03-05T13:18:14.627318+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 6/16 (1884 chars)"}
+{"ts": "2026-03-05T13:20:15.425467+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 7/16 (2050 chars)"}
+{"ts": "2026-03-05T13:22:16.325463+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 8/16 (1914 chars)"}
+{"ts": "2026-03-05T13:24:17.120360+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 9/16 (829 chars)"}
+{"ts": "2026-03-05T13:26:18.003147+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 10/16 (1398 chars)"}
+{"ts": "2026-03-05T13:28:18.965687+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 11/16 (1032 chars)"}
+{"ts": "2026-03-05T13:30:19.746198+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 12/16 (2025 chars)"}
+{"ts": "2026-03-05T13:32:21.056037+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 13/16 (1566 chars)"}
+{"ts": "2026-03-05T13:34:21.828455+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 14/16 (1399 chars)"}
+{"ts": "2026-03-05T13:36:22.737608+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 15/16 (1348 chars)"}
+{"ts": "2026-03-05T13:38:23.644473+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 16/16 (202 chars)"}
+{"ts": "2026-03-05T13:38:25.168402+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Pinned message 145"}
+{"ts": "2026-03-05T13:38:25.168584+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Delivery complete: 16 sent, 0 failed"}
+{"ts": "2026-03-05T13:38:25.168835+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Completed in 1814.88s"}
+{"ts": "2026-03-05T13:38:25.168986+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-05T13:38:25.169091+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "Run complete: {'run_id': '20260305_080000', 'state': 'florida', 'scraped_pages': 5, 'articles_found': 29, 'articles_selected': 12, 'messages_sent': 16, 'messages_failed': 0, 'dry_run': False}"}
+{"ts": "2026-03-05T13:38:25.169157+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-05T13:38:25.169746+00:00", "level": "INFO", "logger": "scheduler.job", "msg": "Scheduled pipeline completed: {'run_id': '20260305_080000', 'state': 'florida', 'scraped_pages': 5, 'articles_found': 29, 'articles_selected': 12, 'messages_sent': 16, 'messages_failed': 0, 'dry_run': False}"}
+{"ts": "2026-03-05T13:38:25.170879+00:00", "level": "INFO", "logger": "apscheduler.executors.default", "msg": "Job \"Florida Realty Intel Daily Report (trigger: cron[day_of_week='mon-fri', hour='8', minute='0'], next run at: 2026-03-06 08:00:00 EST)\" executed successfully"}
+{"ts": "2026-03-06T13:00:00.529510+00:00", "level": "INFO", "logger": "apscheduler.executors.default", "msg": "Running job \"Florida Realty Intel Daily Report (trigger: cron[day_of_week='mon-fri', hour='8', minute='0'], next run at: 2026-03-09 08:00:00 EDT)\" (scheduled at 2026-03-06 08:00:00-05:00)"}
+{"ts": "2026-03-06T13:00:00.532123+00:00", "level": "INFO", "logger": "scheduler.job", "msg": "Scheduled pipeline starting..."}
+{"ts": "2026-03-06T13:00:00.585737+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-06T13:00:00.585771+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "Pipeline run 20260306_080000 | State: FLORIDA"}
+{"ts": "2026-03-06T13:00:00.585798+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-06T13:00:00.585818+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 0: Firecrawl ---"}
+{"ts": "2026-03-06T13:00:00.585854+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-06T13:00:00.585885+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Firecrawl MCP: scraping 6 URLs"}
+{"ts": "2026-03-06T13:01:14.193009+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages?beta=true \"HTTP/1.1 200 OK\""}
+{"ts": "2026-03-06T13:01:14.216063+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Firecrawl MCP response: 10057 chars"}
+{"ts": "2026-03-06T13:01:14.218011+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Firecrawl MCP complete: 6 ok, 0 failed"}
+{"ts": "2026-03-06T13:01:14.218650+00:00", "level": "INFO", "logger": "FirecrawlAgent", "msg": "Completed in 73.63s"}
+{"ts": "2026-03-06T13:01:14.218710+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 1: Research (Tavily MCP) ---"}
+{"ts": "2026-03-06T13:01:14.218760+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-06T13:01:14.218849+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Perplexity research: Florida (13 categories)"}
+{"ts": "2026-03-06T13:01:17.383137+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida mortgage rates today 2026 30-year fixed': 8 articles"}
+{"ts": "2026-03-06T13:01:19.922741+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida HOA insurance property tax changes 2026': 8 articles"}
+{"ts": "2026-03-06T13:01:20.066983+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Fed interest rate decision housing market Florida 2026': 6 articles"}
+{"ts": "2026-03-06T13:01:23.593257+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Miami Florida real estate market 2026 prices inventory trend': 6 articles"}
+{"ts": "2026-03-06T13:01:24.645723+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida real estate legislation new laws 2026': 8 articles"}
+{"ts": "2026-03-06T13:01:25.759886+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Orlando housing market median price days on market 2026': 8 articles"}
+{"ts": "2026-03-06T13:01:26.049086+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Orlando Florida real estate market 2026 prices inventory tre': 8 articles"}
+{"ts": "2026-03-06T13:01:29.785727+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Tampa housing market median price days on market 2026': 8 articles"}
+{"ts": "2026-03-06T13:01:29.958876+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Tampa Florida real estate market 2026 prices inventory trend': 5 articles"}
+{"ts": "2026-03-06T13:01:30.091016+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Miami housing market median price days on market 2026': 9 articles"}
+{"ts": "2026-03-06T13:01:31.526127+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Jacksonville housing market median price days on market 2026': 7 articles"}
+{"ts": "2026-03-06T13:01:35.127214+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Jacksonville Florida real estate market 2026 prices inventor': 7 articles"}
+{"ts": "2026-03-06T13:01:37.022873+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Fort Lauderdale housing market median price days on market 2': 7 articles"}
+{"ts": "2026-03-06T13:01:37.438001+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Fort Lauderdale Florida real estate market 2026 prices inven': 8 articles"}
+{"ts": "2026-03-06T13:01:38.135173+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Latin American buyers Florida real estate 2026': 9 articles"}
+{"ts": "2026-03-06T13:01:40.037598+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'international investors Miami real estate Colombia Venezuela': 8 articles"}
+{"ts": "2026-03-06T13:01:42.316059+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'South Florida luxury real estate $5M+ market 2026': 8 articles"}
+{"ts": "2026-03-06T13:01:43.574447+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida new construction housing starts 2026': 8 articles"}
+{"ts": "2026-03-06T13:01:45.613264+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Miami ultra-luxury properties sales 2026': 7 articles"}
+{"ts": "2026-03-06T13:01:48.091564+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida new development pre-construction 2026': 8 articles"}
+{"ts": "2026-03-06T13:01:48.419340+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida median home prices days on market statistics 2026': 5 articles"}
+{"ts": "2026-03-06T13:01:49.518873+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida housing inventory levels prices 2026': 6 articles"}
+{"ts": "2026-03-06T13:01:52.115625+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida economy housing market outlook 2026': 6 articles"}
+{"ts": "2026-03-06T13:01:52.518450+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Florida real estate investment trends 2026': 6 articles"}
+{"ts": "2026-03-06T13:01:54.157533+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'Bitcoin crypto buyers real estate Florida Miami 2026': 6 articles"}
+{"ts": "2026-03-06T13:01:56.096414+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Query 'cryptocurrency payment real estate property Florida BTC 2026': 6 articles"}
+{"ts": "2026-03-06T13:01:56.173242+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Perplexity: 186 raw → 32 unique articles"}
+{"ts": "2026-03-06T13:01:56.173672+00:00", "level": "INFO", "logger": "ResearchAgent", "msg": "Completed in 41.95s"}
+{"ts": "2026-03-06T13:01:56.173702+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 2: Analysis ---"}
+{"ts": "2026-03-06T13:01:56.173725+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-06T13:01:56.174370+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Analyzing 32 articles (of 32) + 6 scraped pages"}
+{"ts": "2026-03-06T13:03:21.389915+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages \"HTTP/1.1 200 OK\""}
+{"ts": "2026-03-06T13:03:21.398073+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Analysis complete: 12 articles selected, 30yr rate: 6.00%"}
+{"ts": "2026-03-06T13:03:21.398250+00:00", "level": "INFO", "logger": "AnalysisAgent", "msg": "Completed in 85.22s"}
+{"ts": "2026-03-06T13:03:21.398321+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 3: Writing ---"}
+{"ts": "2026-03-06T13:03:21.398387+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-06T13:03:21.398829+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Writing newsletter with 12 stories"}
+{"ts": "2026-03-06T13:05:42.790548+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages \"HTTP/1.1 200 OK\""}
+{"ts": "2026-03-06T13:05:42.794124+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Writing response: 21908 chars"}
+{"ts": "2026-03-06T13:05:42.795266+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Parsed sections: ['HEADER', 'RESUMEN EJECUTIVO', 'HISTORIA_1', 'HISTORIA_2', 'HISTORIA_3', 'HISTORIA_4', 'HISTORIA_5', 'HISTORIA_6', 'MERCADO', 'INVERSION_LATINA', 'ESTRATEGIAS', 'RADAR', 'BTC_CRIPTO', 'FOOTER']"}
+{"ts": "2026-03-06T13:05:42.795484+00:00", "level": "INFO", "logger": "WritingAgent", "msg": "Completed in 141.40s"}
+{"ts": "2026-03-06T13:05:42.795571+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 4: Editorial ---"}
+{"ts": "2026-03-06T13:05:42.795651+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-06T13:05:42.795803+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Editorial review: 21922 chars, 6 stories"}
+{"ts": "2026-03-06T13:08:11.647302+00:00", "level": "INFO", "logger": "httpx", "msg": "HTTP Request: POST https://api.anthropic.com/v1/messages \"HTTP/1.1 200 OK\""}
+{"ts": "2026-03-06T13:08:11.650667+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Editorial response: 22415 chars"}
+{"ts": "2026-03-06T13:08:11.651156+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Editorial complete: 16 Telegram messages"}
+{"ts": "2026-03-06T13:08:11.651270+00:00", "level": "INFO", "logger": "EditorialAgent", "msg": "Completed in 148.85s"}
+{"ts": "2026-03-06T13:08:11.651345+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "--- Phase 5: Delivery ---"}
+{"ts": "2026-03-06T13:08:11.651461+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Starting (attempt 1/3)"}
+{"ts": "2026-03-06T13:08:11.651527+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Sending 16 messages to Telegram"}
+{"ts": "2026-03-06T13:08:11.651585+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 1/16 (179 chars)"}
+{"ts": "2026-03-06T13:10:13.371839+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 2/16 (692 chars)"}
+{"ts": "2026-03-06T13:12:14.081547+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 3/16 (1541 chars)"}
+{"ts": "2026-03-06T13:14:14.874131+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 4/16 (1697 chars)"}
+{"ts": "2026-03-06T13:16:15.956728+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 5/16 (1951 chars)"}
+{"ts": "2026-03-06T13:18:16.765797+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 6/16 (1895 chars)"}
+{"ts": "2026-03-06T13:20:17.874012+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 7/16 (2182 chars)"}
+{"ts": "2026-03-06T13:22:18.876349+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 8/16 (2106 chars)"}
+{"ts": "2026-03-06T13:24:19.906461+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 9/16 (712 chars)"}
+{"ts": "2026-03-06T13:26:20.689847+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 10/16 (1662 chars)"}
+{"ts": "2026-03-06T13:28:21.608613+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 11/16 (1251 chars)"}
+{"ts": "2026-03-06T13:30:22.367287+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 12/16 (1817 chars)"}
+{"ts": "2026-03-06T13:32:23.297676+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 13/16 (1357 chars)"}
+{"ts": "2026-03-06T13:34:24.104282+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 14/16 (1394 chars)"}
+{"ts": "2026-03-06T13:36:25.002684+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 15/16 (1204 chars)"}
+{"ts": "2026-03-06T13:38:25.885439+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Message 16/16 (202 chars)"}
+{"ts": "2026-03-06T13:38:27.740207+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Pinned message 162"}
+{"ts": "2026-03-06T13:38:27.740504+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Delivery complete: 16 sent, 0 failed"}
+{"ts": "2026-03-06T13:38:27.740699+00:00", "level": "INFO", "logger": "DeliveryAgent", "msg": "Completed in 1816.08s"}
+{"ts": "2026-03-06T13:38:27.740842+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-06T13:38:27.740937+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "Run complete: {'run_id': '20260306_080000', 'state': 'florida', 'scraped_pages': 6, 'articles_found': 32, 'articles_selected': 12, 'messages_sent': 16, 'messages_failed': 0, 'dry_run': False}"}
+{"ts": "2026-03-06T13:38:27.741006+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
+{"ts": "2026-03-06T13:38:27.741551+00:00", "level": "INFO", "logger": "scheduler.job", "msg": "Scheduled pipeline completed: {'run_id': '20260306_080000', 'state': 'florida', 'scraped_pages': 6, 'articles_found': 32, 'articles_selected': 12, 'messages_sent': 16, 'messages_failed': 0, 'dry_run': False}"}
+{"ts": "2026-03-06T13:38:27.742414+00:00", "level": "INFO", "logger": "apscheduler.executors.default", "msg": "Job \"Florida Realty Intel Daily Report (trigger: cron[day_of_week='mon-fri', hour='8', minute='0'], next run at: 2026-03-09 08:00:00 EDT)\" executed successfully"}
