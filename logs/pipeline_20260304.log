@@ -496,3 +496,6 @@
 {"ts": "2026-03-06T13:38:27.741006+00:00", "level": "INFO", "logger": "Orchestrator", "msg": "=================================================="}
 {"ts": "2026-03-06T13:38:27.741551+00:00", "level": "INFO", "logger": "scheduler.job", "msg": "Scheduled pipeline completed: {'run_id': '20260306_080000', 'state': 'florida', 'scraped_pages': 6, 'articles_found': 32, 'articles_selected': 12, 'messages_sent': 16, 'messages_failed': 0, 'dry_run': False}"}
 {"ts": "2026-03-06T13:38:27.742414+00:00", "level": "INFO", "logger": "apscheduler.executors.default", "msg": "Job \"Florida Realty Intel Daily Report (trigger: cron[day_of_week='mon-fri', hour='8', minute='0'], next run at: 2026-03-09 08:00:00 EDT)\" executed successfully"}
+{"ts": "2026-03-06T23:48:46.881735+00:00", "level": "INFO", "logger": "scheduler", "msg": "Signal 15 received. Shutting down scheduler..."}
+{"ts": "2026-03-06T23:48:46.891484+00:00", "level": "INFO", "logger": "apscheduler.scheduler", "msg": "Scheduler has been shut down"}
+{"ts": "2026-03-06T23:48:46.895000+00:00", "level": "INFO", "logger": "scheduler", "msg": "Scheduler stopped."}

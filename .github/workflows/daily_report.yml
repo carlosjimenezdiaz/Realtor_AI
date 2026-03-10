@@ -1,0 +1,86 @@
+name: Daily Realty Report
+
+on:
+  schedule:
+    - cron: '0 13 * * 1-5'  # Mon-Fri 8:00 AM EST (13:00 UTC) / 9:00 AM EDT
+  workflow_dispatch:
+    inputs:
+      state_name:
+        description: 'Full state name (e.g. California)'
+        required: true
+        default: ''
+      state_abbreviation:
+        description: 'State abbreviation (e.g. CA)'
+        required: true
+        default: ''
+      cities:
+        description: 'Comma-separated cities (e.g. Los Angeles,San Francisco,San Diego)'
+        required: true
+        default: ''
+      newsletter_name:
+        description: 'Newsletter name (e.g. California Realty Intel)'
+        required: true
+        default: ''
+      timezone:
+        description: 'IANA timezone (e.g. America/Los_Angeles)'
+        required: false
+        default: 'America/New_York'
+      state_realtors_url:
+        description: 'State realtors association URL (optional)'
+        required: false
+        default: ''
+      telegram_chat_id:
+        description: 'Telegram chat/channel ID for this state'
+        required: true
+        default: ''
+
+jobs:
+  generate-report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Create required directories
+        run: mkdir -p data logs costs
+
+      - name: Run pipeline
+        env:
+          # API Keys — configurar en: Settings → Secrets and variables → Actions → Secrets
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
+          FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          # inputs tienen prioridad sobre vars (para ejecución manual multi-estado)
+          # cron usa vars como fallback
+          TELEGRAM_CHAT_ID: ${{ inputs.telegram_chat_id || vars.TELEGRAM_CHAT_ID }}
+          STATE_NAME: ${{ inputs.state_name || vars.STATE_NAME }}
+          STATE_ABBREVIATION: ${{ inputs.state_abbreviation || vars.STATE_ABBREVIATION }}
+          CITIES: ${{ inputs.cities || vars.CITIES }}
+          TIMEZONE: ${{ inputs.timezone || vars.TIMEZONE }}
+          NEWSLETTER_NAME: ${{ inputs.newsletter_name || vars.NEWSLETTER_NAME }}
+          STATE_REALTORS_URL: ${{ inputs.state_realtors_url || vars.STATE_REALTORS_URL }}
+          # Dedup separado por estado para evitar colisiones entre ejecuciones paralelas
+          DEDUP_HISTORY_FILE: data/seen_articles_${{ inputs.state_abbreviation || vars.STATE_ABBREVIATION }}.json
+        run: python main.py
+
+      - name: Persist deduplication state
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/seen_articles_*.json
+          git diff --staged --quiet || (git commit -m "chore: update dedup state [${{ inputs.state_abbreviation || vars.STATE_ABBREVIATION }}] [skip ci]" && git push)
