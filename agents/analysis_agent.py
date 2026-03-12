@@ -7,7 +7,7 @@ from agents.base_agent import BaseAgent
 from models.analysis_result import AnalysisBundle, MarketData, ScoredArticle
 from models.research_result import ResearchBundle
 from models.scraped_data import ScrapedDataBundle
-from prompts.analysis_prompts import ANALYSIS_SYSTEM_PROMPT, build_analysis_user_prompt
+from prompts.analysis_prompts import build_analysis_system_prompt, build_analysis_user_prompt
 
 MAX_ARTICLES_FOR_ANALYSIS = 40  # Cap to stay within token budget
 ANALYSIS_MAX_TOKENS = 8192
@@ -15,7 +15,7 @@ ANALYSIS_MAX_TOKENS = 8192
 
 class AnalysisAgent(BaseAgent):
     """
-    Phase 2: Combines Firecrawl data + Tavily articles and selects the best content.
+    Phase 2: Combines Firecrawl data + Perplexity articles and selects the best content.
 
     Claude scores each article on 5 criteria and extracts key market data numbers
     from both scraped pages (structured data) and news articles (narrative data).
@@ -34,29 +34,22 @@ class AnalysisAgent(BaseAgent):
     ) -> AnalysisBundle:
         research_bundle, scraped_bundle = input_data
         state_name = self.state_config.state_name
+        cities = self.state_config.major_cities
 
-        # Cap articles to avoid exceeding token budget
-        top_articles = sorted(
-            research_bundle.articles, key=lambda a: a.score, reverse=True
-        )[:MAX_ARTICLES_FOR_ANALYSIS]
-
-        # Build a trimmed text context from top articles
-        research_text = self._articles_to_prompt_text(top_articles)
-        # Also include the raw research text if articles are few
-        if len(top_articles) < 20 and research_bundle.raw_research_text:
-            research_text = research_bundle.raw_research_text[:15000]
-
+        # Cap articles to stay within token budget
+        top_articles = research_bundle.articles[:MAX_ARTICLES_FOR_ANALYSIS]
+        research_text = research_bundle.to_prompt_context()
         scraped_context = scraped_bundle.get_combined_context()
 
         user_prompt = build_analysis_user_prompt(
             research_text=research_text,
             scraped_context=scraped_context,
             state_name=state_name,
-            cities=self.state_config.major_cities,
+            cities=cities,
         )
 
         self.logger.info(
-            f"Analyzing {len(top_articles)} articles (of {len(research_bundle.articles)}) "
+            f"Analyzing {len(top_articles)} articles "
             f"+ {scraped_bundle.successful_count} scraped pages"
         )
 
@@ -64,7 +57,7 @@ class AnalysisAgent(BaseAgent):
             model=self.model,
             max_tokens=ANALYSIS_MAX_TOKENS,
             temperature=0.2,
-            system=ANALYSIS_SYSTEM_PROMPT,
+            system=build_analysis_system_prompt(state_name),
             messages=[{"role": "user", "content": user_prompt}],
         )
 
@@ -76,43 +69,24 @@ class AnalysisAgent(BaseAgent):
         raw_text = response.content[0].text.strip()
         return self._parse_response(raw_text, state_name)
 
-    def _articles_to_prompt_text(self, articles) -> str:
-        """Converts top articles to a compact text for the analysis prompt."""
-        lines = []
-        for i, a in enumerate(articles, 1):
-            lines.append(
-                f"[{i}] {a.category} | {a.title}\n"
-                f"    URL: {a.url}\n"
-                f"    FECHA: {a.published_date or 'N/D'}\n"
-                f"    CONTENIDO: {a.content[:300]}...\n"
-            )
-        return "\n".join(lines)
-
     def _parse_response(self, raw_text: str, state_name: str) -> AnalysisBundle:
         """Parses Claude's JSON response into an AnalysisBundle with repair fallback."""
-        # Strip markdown code fences
         clean = re.sub(r"^```(?:json)?\n?", "", raw_text.strip())
         clean = re.sub(r"\n?```$", "", clean.strip())
 
-        # Try direct parse
         try:
             data = json.loads(clean)
             return self._build_bundle(data, state_name)
         except json.JSONDecodeError:
             pass
 
-        # Repair: try to extract what was successfully parsed before truncation
         self.logger.warning("JSON truncated — attempting repair extraction")
         return self._repair_and_parse(clean, state_name)
 
     def _repair_and_parse(self, raw: str, state_name: str) -> AnalysisBundle:
-        """
-        Extracts partial JSON data when the response was truncated.
-        Salvages whatever articles were fully parsed before the cutoff.
-        """
+        """Extracts partial JSON when the response was truncated."""
         articles: list[ScoredArticle] = []
 
-        # Extract individual article objects using regex
         article_pattern = re.compile(
             r'\{\s*"title":\s*"([^"]+)".*?"url":\s*"([^"]+)".*?"category":\s*"([^"]+)"'
             r'.*?"score_total":\s*(\d+).*?"content_summary":\s*"([^"]*)"'
@@ -132,10 +106,16 @@ class AnalysisAgent(BaseAgent):
                 )
             )
 
-        # Extract market data
         def extract_field(field: str) -> str:
             m = re.search(rf'"{field}":\s*"([^"]+)"', raw)
             return m.group(1) if m else "N/D"
+
+        # Try to extract city_medians as a dict block
+        city_medians: dict[str, str] = {}
+        cm_match = re.search(r'"city_medians"\s*:\s*\{([^}]+)\}', raw, re.DOTALL)
+        if cm_match:
+            for pair in re.finditer(r'"([^"]+)":\s*"([^"]+)"', cm_match.group(1)):
+                city_medians[pair.group(1)] = pair.group(2)
 
         market_data = MarketData(
             mortgage_rate_30yr=extract_field("mortgage_rate_30yr"),
@@ -147,11 +127,7 @@ class AnalysisAgent(BaseAgent):
             median_price_sfh=extract_field("median_price_sfh"),
             median_days_on_market=extract_field("median_days_on_market"),
             inventory_yoy_change=extract_field("inventory_yoy_change"),
-            miami_median=extract_field("miami_median"),
-            orlando_median=extract_field("orlando_median"),
-            tampa_median=extract_field("tampa_median"),
-            jacksonville_median=extract_field("jacksonville_median"),
-            fort_lauderdale_median=extract_field("fort_lauderdale_median"),
+            city_medians=city_medians,
         )
 
         if not articles:
@@ -199,15 +175,11 @@ class AnalysisAgent(BaseAgent):
             median_price_sfh=md_raw.get("median_price_sfh", "N/D"),
             median_days_on_market=md_raw.get("median_days_on_market", "N/D"),
             inventory_yoy_change=md_raw.get("inventory_yoy_change", "N/D"),
-            miami_median=md_raw.get("miami_median", "N/D"),
-            orlando_median=md_raw.get("orlando_median", "N/D"),
-            tampa_median=md_raw.get("tampa_median", "N/D"),
-            jacksonville_median=md_raw.get("jacksonville_median", "N/D"),
-            fort_lauderdale_median=md_raw.get("fort_lauderdale_median", "N/D"),
+            city_medians=md_raw.get("city_medians", {}),
         )
 
         self.logger.info(
-            f"Analysis complete: {len(articles)} articles selected, "
+            f"Analysis complete: {len(articles)} articles, "
             f"30yr rate: {market_data.mortgage_rate_30yr}"
         )
 

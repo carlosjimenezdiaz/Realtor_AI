@@ -1,6 +1,5 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
-from typing import Optional
 
 
 @dataclass
@@ -26,12 +25,7 @@ class MarketData:
     median_price_sfh: str = "N/D"
     median_days_on_market: str = "N/D"
     inventory_yoy_change: str = "N/D"
-    # Per-city data
-    miami_median: str = "N/D"
-    orlando_median: str = "N/D"
-    tampa_median: str = "N/D"
-    jacksonville_median: str = "N/D"
-    fort_lauderdale_median: str = "N/D"
+    city_medians: dict[str, str] = field(default_factory=dict)  # {city: median_price}
 
 
 @dataclass

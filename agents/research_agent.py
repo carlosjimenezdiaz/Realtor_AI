@@ -64,9 +64,7 @@ class ResearchAgent(BaseAgent):
                 try:
                     results = future.result()
                     all_articles.extend(results)
-                    self.logger.info(
-                        f"Query '{q[:60]}': {len(results)} articles"
-                    )
+                    self.logger.info(f"Query '{q[:60]}': {len(results)} articles")
                 except Exception as exc:
                     self.logger.warning(f"Query failed '{q[:60]}': {exc}")
 
@@ -76,13 +74,10 @@ class ResearchAgent(BaseAgent):
             f"Perplexity: {len(all_articles)} raw → {len(unique_articles)} unique articles"
         )
 
-        research_text = self._articles_to_text(unique_articles)
-
         return ResearchBundle(
             articles=unique_articles,
             total_queries_run=len(queries),
             state=state_name,
-            raw_research_text=research_text,
         )
 
     def _run_single_query(
@@ -94,12 +89,7 @@ class ResearchAgent(BaseAgent):
             headers={"Authorization": f"Bearer {self.perplexity_api_key}"},
             json={
                 "model": PERPLEXITY_MODEL,
-                "messages": [
-                    {
-                        "role": "user",
-                        "content": f"{query} (today: {today})",
-                    }
-                ],
+                "messages": [{"role": "user", "content": f"{query} (today: {today})"}],
             },
             timeout=REQUEST_TIMEOUT,
         )
@@ -114,9 +104,8 @@ class ResearchAgent(BaseAgent):
                 input_tokens=usage.get("prompt_tokens", 0),
                 output_tokens=usage.get("completion_tokens", 0),
             )
-        # Perplexity returns search_results with title, url, date, snippet
-        search_results: list[dict] = data.get("search_results", [])
 
+        search_results: list[dict] = data.get("search_results", [])
         articles: list[RawArticle] = []
         for result in search_results:
             url = result.get("url", "")
@@ -129,7 +118,7 @@ class ResearchAgent(BaseAgent):
                     content=result.get("snippet", answer_text[:600]),
                     published_date=result.get("date", ""),
                     category=category,
-                    tavily_answer=answer_text[:300],
+                    perplexity_answer=answer_text[:300],
                     source="perplexity",
                 )
             )
@@ -137,7 +126,7 @@ class ResearchAgent(BaseAgent):
         return articles
 
     # -------------------------------------------------------------------------
-    # Query builder — all references use state_name (no hardcoded state names)
+    # Query builder
     # -------------------------------------------------------------------------
 
     def _build_queries_from_categories(
@@ -146,11 +135,8 @@ class ResearchAgent(BaseAgent):
         """
         Builds English search queries from the Spanish category descriptions.
         Returns list of (query, category) tuples — 2 queries per category.
-
-        City names are checked FIRST (highest priority) to prevent false matches
-        against generic keys like "inventario" that appear in city category names.
+        City names are checked FIRST to prevent false matches against generic keys.
         """
-        # City queries — checked before general keys to avoid false matches
         city_query_map: dict[str, list[str]] = {
             city: [
                 f"{city} {state_name} real estate market 2026 prices inventory trends",
@@ -159,7 +145,6 @@ class ResearchAgent(BaseAgent):
             for city in self.cities
         }
 
-        # General thematic query map — only checked if no city matched
         general_query_map: dict[str, list[str]] = {
             "Tasas hipotecarias": [
                 f"{state_name} mortgage rates today 2026 30-year fixed",
@@ -201,7 +186,6 @@ class ResearchAgent(BaseAgent):
 
         queries: list[tuple[str, str]] = []
         for category in categories:
-            # 1. City check first — avoids "inventario" false-matching city categories
             city_matched = False
             for city, city_queries in city_query_map.items():
                 if city.lower() in category.lower():
@@ -212,7 +196,6 @@ class ResearchAgent(BaseAgent):
             if city_matched:
                 continue
 
-            # 2. General thematic keys
             matched = False
             for key, cat_queries in general_query_map.items():
                 if key.lower() in category.lower():
@@ -245,17 +228,3 @@ class ResearchAgent(BaseAgent):
             return title[:120] if title else url[:120]
         except Exception:
             return url[:120]
-
-    def _articles_to_text(self, articles: list[RawArticle]) -> str:
-        """Converts a list of RawArticles to a text summary for the analysis prompt."""
-        lines = []
-        for i, a in enumerate(articles, 1):
-            lines.append(
-                f"[{i}] CATEGORÍA: {a.category}\n"
-                f"    TÍTULO: {a.title}\n"
-                f"    URL: {a.url}\n"
-                f"    FECHA: {a.published_date or 'N/D'}\n"
-                f"    PERPLEXITY SUMMARY: {a.tavily_answer[:200] if a.tavily_answer else 'N/D'}\n"
-                f"    CONTENIDO: {a.content[:400]}...\n"
-            )
-        return "\n".join(lines)

@@ -1,12 +1,10 @@
 from __future__ import annotations
 
 import json
-import threading
 from datetime import date
 from pathlib import Path
 
 # ── Pricing tables (USD) ───────────────────────────────────────────────────────
-# Claude: https://www.anthropic.com/pricing
 _CLAUDE_PRICING: dict[str, dict[str, float]] = {
     "claude-sonnet-4-6":         {"input": 3.0 / 1_000_000, "output": 15.0 / 1_000_000},
     "claude-opus-4-6":           {"input": 15.0 / 1_000_000, "output": 75.0 / 1_000_000},
@@ -14,28 +12,22 @@ _CLAUDE_PRICING: dict[str, dict[str, float]] = {
 }
 _CLAUDE_DEFAULT = {"input": 3.0 / 1_000_000, "output": 15.0 / 1_000_000}
 
-# Perplexity: https://docs.perplexity.ai/guides/pricing
 _PERPLEXITY_PRICING: dict[str, dict[str, float]] = {
     "sonar-pro": {"input": 3.0 / 1_000_000, "output": 15.0 / 1_000_000, "per_request": 5.0 / 1_000},
     "sonar":     {"input": 1.0 / 1_000_000, "output": 5.0 / 1_000_000,  "per_request": 5.0 / 1_000},
 }
 _PERPLEXITY_DEFAULT = {"input": 3.0 / 1_000_000, "output": 15.0 / 1_000_000, "per_request": 5.0 / 1_000}
 
-# Firecrawl: ~$0.001 per page scraped (1 credit @ $0.001)
 _FIRECRAWL_COST_PER_PAGE = 0.001
 
 
 class CostTracker:
     """
-    Thread-safe cost accumulator for a single pipeline run.
-
-    Each agent calls the appropriate record_* method after every API call.
-    The orchestrator calls save() at the end of the run to append to costs_log.json.
+    Cost accumulator for a single pipeline run.
+    Sequential execution — no locking needed.
     """
 
     def __init__(self) -> None:
-        self._lock = threading.Lock()
-        # { agent_name: {model, input_tokens, output_tokens, cost_usd} }
         self._claude: dict[str, dict] = {}
         self._perplexity = {
             "model": "",
@@ -46,25 +38,19 @@ class CostTracker:
         }
         self._firecrawl = {"pages": 0, "cost_usd": 0.0}
 
-    # ── Recording ──────────────────────────────────────────────────────────────
-
     def record_claude(
         self, agent: str, model: str, input_tokens: int, output_tokens: int
     ) -> None:
         pricing = _CLAUDE_PRICING.get(model, _CLAUDE_DEFAULT)
         cost = input_tokens * pricing["input"] + output_tokens * pricing["output"]
-        with self._lock:
-            if agent not in self._claude:
-                self._claude[agent] = {
-                    "model": model,
-                    "input_tokens": 0,
-                    "output_tokens": 0,
-                    "cost_usd": 0.0,
-                }
-            entry = self._claude[agent]
-            entry["input_tokens"] += input_tokens
-            entry["output_tokens"] += output_tokens
-            entry["cost_usd"] = round(entry["cost_usd"] + cost, 6)
+        if agent not in self._claude:
+            self._claude[agent] = {
+                "model": model, "input_tokens": 0, "output_tokens": 0, "cost_usd": 0.0,
+            }
+        entry = self._claude[agent]
+        entry["input_tokens"] += input_tokens
+        entry["output_tokens"] += output_tokens
+        entry["cost_usd"] = round(entry["cost_usd"] + cost, 6)
 
     def record_perplexity(
         self, model: str, input_tokens: int, output_tokens: int, requests: int = 1
@@ -75,21 +61,18 @@ class CostTracker:
             + output_tokens * pricing["output"]
             + requests * pricing["per_request"]
         )
-        with self._lock:
-            p = self._perplexity
-            p["model"] = model
-            p["requests"] += requests
-            p["input_tokens"] += input_tokens
-            p["output_tokens"] += output_tokens
-            p["cost_usd"] = round(p["cost_usd"] + cost, 6)
+        p = self._perplexity
+        p["model"] = model
+        p["requests"] += requests
+        p["input_tokens"] += input_tokens
+        p["output_tokens"] += output_tokens
+        p["cost_usd"] = round(p["cost_usd"] + cost, 6)
 
     def record_firecrawl_pages(self, pages: int) -> None:
-        cost = pages * _FIRECRAWL_COST_PER_PAGE
-        with self._lock:
-            self._firecrawl["pages"] += pages
-            self._firecrawl["cost_usd"] = round(self._firecrawl["cost_usd"] + cost, 6)
-
-    # ── Summary & persistence ──────────────────────────────────────────────────
+        self._firecrawl["pages"] += pages
+        self._firecrawl["cost_usd"] = round(
+            self._firecrawl["cost_usd"] + pages * _FIRECRAWL_COST_PER_PAGE, 6
+        )
 
     def total_usd(self) -> float:
         claude_total = sum(v["cost_usd"] for v in self._claude.values())

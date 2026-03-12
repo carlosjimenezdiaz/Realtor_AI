@@ -8,9 +8,7 @@ from models.analysis_result import AnalysisBundle
 from models.report import FinalReport, ReportSection
 from prompts.writing_prompts import build_writing_system_prompt, build_writing_user_prompt
 from utils.date_utils import format_date_es
-
-SECTION_MARKER = "---SECCIÓN:"
-SECTION_END = "---"
+from utils.section_parser import parse_sections
 
 
 class WritingAgent(BaseAgent):
@@ -46,13 +44,11 @@ class WritingAgent(BaseAgent):
             f"Writing newsletter with {len(analysis_bundle.selected_articles)} stories"
         )
 
-        system_prompt = build_writing_system_prompt(self.state_config.major_cities)
-
         response = self.client.messages.create(
             model=self.model,
             max_tokens=self.config.claude_max_tokens,
             temperature=0.7,
-            system=system_prompt,
+            system=build_writing_system_prompt(self.state_config.major_cities),
             messages=[{"role": "user", "content": user_prompt}],
         )
 
@@ -64,10 +60,10 @@ class WritingAgent(BaseAgent):
         raw_text = response.content[0].text
         self.logger.info(f"Writing response: {len(raw_text)} chars")
 
-        return self._parse_sections(raw_text, analysis_bundle.state)
+        return self._build_report(raw_text, analysis_bundle.state)
 
     def _bundle_to_json(self, bundle: AnalysisBundle) -> str:
-        """Serializes the analysis bundle to a JSON string for the writing prompt."""
+        """Serializes the analysis bundle to JSON for the writing prompt."""
         articles = [
             {
                 "title": a.title,
@@ -89,11 +85,7 @@ class WritingAgent(BaseAgent):
             "median_price_sfh": bundle.market_data.median_price_sfh,
             "median_days_on_market": bundle.market_data.median_days_on_market,
             "inventory_yoy_change": bundle.market_data.inventory_yoy_change,
-            "miami_median": bundle.market_data.miami_median,
-            "orlando_median": bundle.market_data.orlando_median,
-            "tampa_median": bundle.market_data.tampa_median,
-            "jacksonville_median": bundle.market_data.jacksonville_median,
-            "fort_lauderdale_median": bundle.market_data.fort_lauderdale_median,
+            "city_medians": bundle.market_data.city_medians,
         }
         return json.dumps(
             {"articles": articles, "market_data": market},
@@ -101,45 +93,14 @@ class WritingAgent(BaseAgent):
             indent=2,
         )
 
-    def _parse_sections(self, raw_text: str, state: str) -> FinalReport:
-        """
-        Splits the Claude response at ---SECCIÓN: NAME--- markers
-        and maps them to FinalReport fields.
-        """
-        sections: dict[str, str] = {}
-        current_name = None
-        current_lines: list[str] = []
-
-        for line in raw_text.split("\n"):
-            stripped = line.strip()
-            if stripped.startswith(SECTION_MARKER):
-                # Save previous section
-                if current_name:
-                    sections[current_name] = "\n".join(current_lines).strip()
-                # Start new section
-                current_name = (
-                    stripped
-                    .replace(SECTION_MARKER, "")
-                    .rstrip(SECTION_END)
-                    .strip()
-                )
-                current_lines = []
-            else:
-                if current_name:
-                    current_lines.append(line)
-
-        if current_name:
-            sections[current_name] = "\n".join(current_lines).strip()
+    def _build_report(self, raw_text: str, state: str) -> FinalReport:
+        """Parses ---SECCIÓN: NAME--- markers and maps them to FinalReport fields."""
+        sections = dict(parse_sections(raw_text))
 
         self.logger.info(f"Parsed sections: {list(sections.keys())}")
 
-        # Collect all story sections
         story_sections = [
-            ReportSection(
-                title=name,
-                emoji="📰",
-                content=content,
-            )
+            ReportSection(title=name, emoji="📰", content=content)
             for name, content in sections.items()
             if name.startswith("HISTORIA")
         ]

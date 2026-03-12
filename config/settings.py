@@ -24,11 +24,6 @@ class Config:
     claude_model: str
     claude_max_tokens: int
 
-    # Scheduling
-    report_hour: int
-    report_minute: int
-    timezone: str
-
     # Delivery pacing
     message_delay_seconds: int
 
@@ -51,9 +46,6 @@ def load_config() -> Config:
         state_config=StateConfig(),
         claude_model=os.getenv("CLAUDE_MODEL", "claude-sonnet-4-6"),
         claude_max_tokens=int(os.getenv("CLAUDE_MAX_TOKENS", "8192")),
-        report_hour=int(os.getenv("REPORT_HOUR", "8")),
-        report_minute=int(os.getenv("REPORT_MINUTE", "0")),
-        timezone=os.getenv("TIMEZONE", "America/New_York"),
         message_delay_seconds=int(os.getenv("MESSAGE_DELAY_SECONDS", "120")),
         dedup_lookback_days=int(os.getenv("DEDUP_LOOKBACK_DAYS", "7")),
         dedup_history_file=os.getenv("DEDUP_HISTORY_FILE", "data/seen_articles.json"),

@@ -1,17 +1,18 @@
-ANALYSIS_SYSTEM_PROMPT = """
-Eres un analista de mercado inmobiliario senior con 20 años de experiencia en Florida.
+def build_analysis_system_prompt(state_name: str) -> str:
+    return f"""
+Eres un analista de mercado inmobiliario senior con 20 años de experiencia en {state_name}.
 Tu trabajo es evaluar artículos periodísticos y datos de mercado para seleccionar
-el contenido más valioso para agentes inmobiliarios latinos en Florida.
+el contenido más valioso para agentes inmobiliarios latinos en {state_name}.
 
 CRITERIOS DE EVALUACIÓN (0-10 cada uno, total máximo 50):
-1. RELEVANCIA: ¿Impacta directamente al mercado inmobiliario de Florida?
+1. RELEVANCIA: ¿Impacta directamente al mercado inmobiliario de {state_name}?
 2. ACCIONABILIDAD: ¿Puede un agente usar esta información para tomar decisiones hoy?
-3. AUDIENCIA: ¿Es relevante para compradores/vendedores latinos en Florida?
+3. AUDIENCIA: ¿Es relevante para compradores/vendedores latinos en {state_name}?
 4. DATOS: ¿Contiene números, estadísticas o datos concretos?
 5. NOVEDAD: ¿Es información reciente y fresca?
 
 RESPONDE SIEMPRE con JSON válido. Sin texto antes ni después del JSON.
-"""
+""".strip()
 
 
 def build_analysis_user_prompt(
@@ -22,6 +23,9 @@ def build_analysis_user_prompt(
 ) -> str:
     cities_text = ", ".join(cities)
     max_per_city = max(2, 12 // len(cities) + 1)
+    city_medians_template = "\n".join(
+        f'    "{city}": "$XXX,XXX"' for city in cities
+    )
     return f"""
 DATOS SCRAPEADOS DE SITIOS OFICIALES (fuentes de datos estructurados):
 {scraped_context}
@@ -38,11 +42,10 @@ para agentes inmobiliarios latinos en {state_name}.
 
 DISTRIBUCIÓN GEOGRÁFICA OBLIGATORIA: Los 12 artículos seleccionados deben cubrir
 al menos {len(cities) - 1} ciudades distintas de: {cities_text}.
-Máximo {max_per_city} artículos por ciudad. Si Miami tiene más artículos disponibles,
-prioriza diversidad geográfica sobre el score individual.
+Máximo {max_per_city} artículos por ciudad.
 
 Extrae también todos los datos numéricos de mercado que encuentres (tasas hipotecarias,
-precios medianos, inventario, días en mercado) de AMBAS fuentes (datos scrapeados y artículos).
+precios medianos, inventario, días en mercado) de AMBAS fuentes.
 
 Responde ÚNICAMENTE con este JSON:
 {{
@@ -74,14 +77,12 @@ Responde ÚNICAMENTE con este JSON:
     "median_price_sfh": "$XXX,XXX",
     "median_days_on_market": "XX",
     "inventory_yoy_change": "+X.X%",
-    "miami_median": "$XXX,XXX",
-    "orlando_median": "$XXX,XXX",
-    "tampa_median": "$XXX,XXX",
-    "jacksonville_median": "$XXX,XXX",
-    "fort_lauderdale_median": "$XXX,XXX"
+    "city_medians": {{
+{city_medians_template}
+    }}
   }},
   "coverage_gaps": ["Lista de temas sin cobertura hoy, si aplica"]
 }}
 
 Si no tienes datos para un campo numérico, usa "N/D" (no disponible).
-"""
+""".strip()
