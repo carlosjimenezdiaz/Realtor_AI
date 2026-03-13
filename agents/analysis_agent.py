@@ -1,31 +1,28 @@
 from __future__ import annotations
 import json
 import re
-import anthropic
 
 from agents.base_agent import BaseAgent
 from models.analysis_result import AnalysisBundle, MarketData, ScoredArticle
 from models.research_result import ResearchBundle
 from models.scraped_data import ScrapedDataBundle
 from prompts.analysis_prompts import build_analysis_system_prompt, build_analysis_user_prompt
+from utils.llm_client import make_client, model_id
 
-MAX_ARTICLES_FOR_ANALYSIS = 40  # Cap to stay within token budget
+MAX_ARTICLES_FOR_ANALYSIS = 40
 ANALYSIS_MAX_TOKENS = 8192
 
 
 class AnalysisAgent(BaseAgent):
     """
     Phase 2: Combines Firecrawl data + Perplexity articles and selects the best content.
-
-    Claude scores each article on 5 criteria and extracts key market data numbers
-    from both scraped pages (structured data) and news articles (narrative data).
-    Output is a clean AnalysisBundle ready for the writing agent.
+    Uses OpenRouter (OpenAI-compatible API) to call Claude.
     """
 
     def __init__(self, config, cost_tracker=None) -> None:
         super().__init__(config, cost_tracker)
-        self.client = anthropic.Anthropic(api_key=config.anthropic_api_key)
-        self.model = config.claude_model
+        self.client = make_client(config.openrouter_api_key)
+        self.model = model_id(config.claude_model)
         self.state_config = config.state_config
 
     def _execute(
@@ -36,7 +33,6 @@ class AnalysisAgent(BaseAgent):
         state_name = self.state_config.state_name
         cities = self.state_config.major_cities
 
-        # Cap articles to stay within token budget
         top_articles = research_bundle.articles[:MAX_ARTICLES_FOR_ANALYSIS]
         research_text = research_bundle.to_prompt_context()
         scraped_context = scraped_bundle.get_combined_context()
@@ -53,24 +49,25 @@ class AnalysisAgent(BaseAgent):
             f"+ {scraped_bundle.successful_count} scraped pages"
         )
 
-        response = self.client.messages.create(
+        response = self.client.chat.completions.create(
             model=self.model,
             max_tokens=ANALYSIS_MAX_TOKENS,
             temperature=0.2,
-            system=build_analysis_system_prompt(state_name),
-            messages=[{"role": "user", "content": user_prompt}],
+            messages=[
+                {"role": "system", "content": build_analysis_system_prompt(state_name)},
+                {"role": "user", "content": user_prompt},
+            ],
         )
 
         if self.cost_tracker:
             self.cost_tracker.record_claude(
                 "analysis_agent", self.model,
-                response.usage.input_tokens, response.usage.output_tokens,
+                response.usage.prompt_tokens, response.usage.completion_tokens,
             )
-        raw_text = response.content[0].text.strip()
+        raw_text = response.choices[0].message.content.strip()
         return self._parse_response(raw_text, state_name)
 
     def _parse_response(self, raw_text: str, state_name: str) -> AnalysisBundle:
-        """Parses Claude's JSON response into an AnalysisBundle with repair fallback."""
         clean = re.sub(r"^```(?:json)?\n?", "", raw_text.strip())
         clean = re.sub(r"\n?```$", "", clean.strip())
 
@@ -84,7 +81,6 @@ class AnalysisAgent(BaseAgent):
         return self._repair_and_parse(clean, state_name)
 
     def _repair_and_parse(self, raw: str, state_name: str) -> AnalysisBundle:
-        """Extracts partial JSON when the response was truncated."""
         articles: list[ScoredArticle] = []
 
         article_pattern = re.compile(
@@ -93,24 +89,17 @@ class AnalysisAgent(BaseAgent):
             r'.*?"why_important_for_agents":\s*"([^"]*)"',
             re.DOTALL,
         )
-
         for m in article_pattern.finditer(raw):
-            articles.append(
-                ScoredArticle(
-                    title=m.group(1),
-                    url=m.group(2),
-                    category=m.group(3),
-                    score_total=int(m.group(4)),
-                    content_summary=m.group(5),
-                    why_important_for_agents=m.group(6),
-                )
-            )
+            articles.append(ScoredArticle(
+                title=m.group(1), url=m.group(2), category=m.group(3),
+                score_total=int(m.group(4)), content_summary=m.group(5),
+                why_important_for_agents=m.group(6),
+            ))
 
         def extract_field(field: str) -> str:
             m = re.search(rf'"{field}":\s*"([^"]+)"', raw)
             return m.group(1) if m else "N/D"
 
-        # Try to extract city_medians as a dict block
         city_medians: dict[str, str] = {}
         cm_match = re.search(r'"city_medians"\s*:\s*\{([^}]+)\}', raw, re.DOTALL)
         if cm_match:
@@ -131,29 +120,15 @@ class AnalysisAgent(BaseAgent):
         )
 
         if not articles:
-            raise ValueError(
-                "Analysis agent returned JSON that could not be repaired. "
-                "No articles extracted."
-            )
+            raise ValueError("Analysis agent returned JSON that could not be repaired.")
 
-        self.logger.info(
-            f"Repair extracted {len(articles)} articles, "
-            f"30yr rate: {market_data.mortgage_rate_30yr}"
-        )
-
-        return AnalysisBundle(
-            selected_articles=articles,
-            market_data=market_data,
-            coverage_gaps=[],
-            state=state_name,
-        )
+        self.logger.info(f"Repair extracted {len(articles)} articles")
+        return AnalysisBundle(selected_articles=articles, market_data=market_data, state=state_name)
 
     def _build_bundle(self, data: dict, state_name: str) -> AnalysisBundle:
-        """Builds AnalysisBundle from successfully parsed JSON dict."""
         articles = [
             ScoredArticle(
-                title=a.get("title", ""),
-                url=a.get("url", ""),
+                title=a.get("title", ""), url=a.get("url", ""),
                 category=a.get("category", "General"),
                 score_total=a.get("score_total", 0),
                 content_summary=a.get("content_summary", ""),
@@ -163,7 +138,6 @@ class AnalysisAgent(BaseAgent):
             )
             for a in data.get("selected_articles", [])
         ]
-
         md_raw = data.get("market_data", {})
         market_data = MarketData(
             mortgage_rate_30yr=md_raw.get("mortgage_rate_30yr", "N/D"),
@@ -177,15 +151,11 @@ class AnalysisAgent(BaseAgent):
             inventory_yoy_change=md_raw.get("inventory_yoy_change", "N/D"),
             city_medians=md_raw.get("city_medians", {}),
         )
-
         self.logger.info(
             f"Analysis complete: {len(articles)} articles, "
             f"30yr rate: {market_data.mortgage_rate_30yr}"
         )
-
         return AnalysisBundle(
-            selected_articles=articles,
-            market_data=market_data,
-            coverage_gaps=data.get("coverage_gaps", []),
-            state=state_name,
+            selected_articles=articles, market_data=market_data,
+            coverage_gaps=data.get("coverage_gaps", []), state=state_name,
         )

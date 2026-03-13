@@ -11,7 +11,7 @@ load_dotenv()
 @dataclass(frozen=True)
 class Config:
     # API Keys
-    anthropic_api_key: str
+    openrouter_api_key: str
     perplexity_api_key: str
     firecrawl_api_key: str
     telegram_bot_token: str
@@ -20,7 +20,7 @@ class Config:
     # State (fully driven by env vars via StateConfig)
     state_config: object
 
-    # Claude
+    # Claude (via OpenRouter)
     claude_model: str
     claude_max_tokens: int
 
@@ -38,7 +38,7 @@ class Config:
 def load_config() -> Config:
     """Load and validate all configuration from environment variables."""
     return Config(
-        anthropic_api_key=_require("ANTHROPIC_API_KEY"),
+        openrouter_api_key=_require("OPENROUTER_API_KEY"),
         perplexity_api_key=_require("PERPLEXITY_API_KEY"),
         firecrawl_api_key=_require("FIRECRAWL_API_KEY"),
         telegram_bot_token=_require("TELEGRAM_BOT_TOKEN"),

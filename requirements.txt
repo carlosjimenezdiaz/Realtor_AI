@@ -1,17 +1,13 @@
-# Core AI
-anthropic>=0.49.0
+# LLM (via OpenRouter — OpenAI-compatible API)
+openai>=1.30.0
 
 # Web Scraping
 firecrawl-py>=1.4.0
 
-# Scheduling
-APScheduler>=3.10.0
-pytz>=2024.1
-
 # Config
 python-dotenv>=1.0.0
 
-# HTTP (Telegram delivery)
+# HTTP (Telegram delivery + Perplexity)
 requests>=2.32.0
 
 # Testing

@@ -1,6 +1,5 @@
 from __future__ import annotations
 import json
-import anthropic
 from datetime import date
 
 from agents.base_agent import BaseAgent
@@ -8,23 +7,21 @@ from models.analysis_result import AnalysisBundle
 from models.report import FinalReport, ReportSection
 from prompts.writing_prompts import build_writing_system_prompt, build_writing_user_prompt
 from utils.date_utils import format_date_es
+from utils.llm_client import make_client, model_id
 from utils.section_parser import parse_sections
 
 
 class WritingAgent(BaseAgent):
     """
-    Phase 3: Writes the full Spanish newsletter from the analysis bundle.
-
-    Claude uses the selected articles and market data to produce a
-    Bloomberg-style professional report in Spanish, formatted for Telegram.
-    The report is split into named sections using markers.
+    Phase 3: Writes the full Spanish newsletter from the analysis bundle via OpenRouter.
     """
 
     def __init__(self, config, cost_tracker=None) -> None:
         super().__init__(config, cost_tracker)
-        self.client = anthropic.Anthropic(api_key=config.anthropic_api_key)
-        self.model = config.claude_model
+        self.client = make_client(config.openrouter_api_key)
+        self.model = model_id(config.claude_model)
         self.state_config = config.state_config
+        self.max_tokens = config.claude_max_tokens
 
     def _execute(self, input_data: AnalysisBundle) -> FinalReport:
         analysis_bundle = input_data
@@ -44,31 +41,30 @@ class WritingAgent(BaseAgent):
             f"Writing newsletter with {len(analysis_bundle.selected_articles)} stories"
         )
 
-        response = self.client.messages.create(
+        response = self.client.chat.completions.create(
             model=self.model,
-            max_tokens=self.config.claude_max_tokens,
+            max_tokens=self.max_tokens,
             temperature=0.7,
-            system=build_writing_system_prompt(self.state_config.major_cities),
-            messages=[{"role": "user", "content": user_prompt}],
+            messages=[
+                {"role": "system", "content": build_writing_system_prompt(self.state_config.major_cities)},
+                {"role": "user", "content": user_prompt},
+            ],
         )
 
         if self.cost_tracker:
             self.cost_tracker.record_claude(
                 "writing_agent", self.model,
-                response.usage.input_tokens, response.usage.output_tokens,
+                response.usage.prompt_tokens, response.usage.completion_tokens,
             )
-        raw_text = response.content[0].text
+        raw_text = response.choices[0].message.content
         self.logger.info(f"Writing response: {len(raw_text)} chars")
 
         return self._build_report(raw_text, analysis_bundle.state)
 
     def _bundle_to_json(self, bundle: AnalysisBundle) -> str:
-        """Serializes the analysis bundle to JSON for the writing prompt."""
         articles = [
             {
-                "title": a.title,
-                "url": a.url,
-                "category": a.category,
+                "title": a.title, "url": a.url, "category": a.category,
                 "content_summary": a.content_summary,
                 "why_important_for_agents": a.why_important_for_agents,
                 "key_data_points": a.key_data_points,
@@ -87,16 +83,10 @@ class WritingAgent(BaseAgent):
             "inventory_yoy_change": bundle.market_data.inventory_yoy_change,
             "city_medians": bundle.market_data.city_medians,
         }
-        return json.dumps(
-            {"articles": articles, "market_data": market},
-            ensure_ascii=False,
-            indent=2,
-        )
+        return json.dumps({"articles": articles, "market_data": market}, ensure_ascii=False, indent=2)
 
     def _build_report(self, raw_text: str, state: str) -> FinalReport:
-        """Parses ---SECCIÓN: NAME--- markers and maps them to FinalReport fields."""
         sections = dict(parse_sections(raw_text))
-
         self.logger.info(f"Parsed sections: {list(sections.keys())}")
 
         story_sections = [
