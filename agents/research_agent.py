@@ -7,25 +7,25 @@ from agents.base_agent import BaseAgent
 from models.research_result import RawArticle, ResearchBundle
 from utils.date_utils import format_date_es
 from utils.deduplicator import ArticleDeduplicator
+from utils.llm_client import OPENROUTER_BASE_URL
 
 MAX_CONCURRENT_QUERIES = 5
-PERPLEXITY_API_URL = "https://api.perplexity.ai/chat/completions"
-PERPLEXITY_MODEL = "sonar-pro"
+PERPLEXITY_MODEL = "perplexity/sonar-pro"  # via OpenRouter
 REQUEST_TIMEOUT = 30
 
 
 class ResearchAgent(BaseAgent):
     """
-    Phase 1: News research using Perplexity Sonar API.
+    Phase 1: News research using Perplexity Sonar via OpenRouter.
 
-    Runs parallel queries per research category. Each Perplexity response includes
-    `search_results` (verified source URLs) that become RawArticle objects for downstream
-    analysis. Deduplication is cross-day persistent via ArticleDeduplicator.
+    Runs parallel queries per research category. OpenRouter returns a synthesized
+    answer plus a `citations` list of source URLs that become RawArticle objects.
+    Deduplication is cross-day persistent via ArticleDeduplicator.
     """
 
     def __init__(self, config, cost_tracker=None) -> None:
         super().__init__(config, cost_tracker)
-        self.perplexity_api_key = config.perplexity_api_key
+        self.openrouter_api_key = config.openrouter_api_key
         self.deduplicator = ArticleDeduplicator(
             history_file=config.dedup_history_file,
             lookback_days=config.dedup_lookback_days,
@@ -36,20 +36,16 @@ class ResearchAgent(BaseAgent):
     def _execute(self, input_data=None) -> ResearchBundle:
         state_name = self.state_config.state_name
         categories = self.state_config.research_categories
-        return self._research_via_perplexity(state_name, categories)
+        return self._run_research(state_name, categories)
 
     # -------------------------------------------------------------------------
-    # Perplexity Sonar API (parallel queries with verified citations)
+    # Perplexity Sonar via OpenRouter
     # -------------------------------------------------------------------------
 
-    def _research_via_perplexity(
-        self, state_name: str, categories: list[str]
-    ) -> ResearchBundle:
-        """Runs parallel Perplexity searches, one per research category."""
+    def _run_research(self, state_name: str, categories: list[str]) -> ResearchBundle:
+        """Runs parallel Perplexity Sonar searches via OpenRouter."""
         today = format_date_es()
-        self.logger.info(
-            f"Perplexity research: {state_name} ({len(categories)} categories)"
-        )
+        self.logger.info(f"Research: {state_name} ({len(categories)} categories) via OpenRouter")
 
         all_articles: list[RawArticle] = []
         queries = self._build_queries_from_categories(categories, state_name)
@@ -69,9 +65,8 @@ class ResearchAgent(BaseAgent):
                     self.logger.warning(f"Query failed '{q[:60]}': {exc}")
 
         unique_articles = self.deduplicator.deduplicate(all_articles)
-
         self.logger.info(
-            f"Perplexity: {len(all_articles)} raw → {len(unique_articles)} unique articles"
+            f"Research: {len(all_articles)} raw → {len(unique_articles)} unique articles"
         )
 
         return ResearchBundle(
@@ -80,13 +75,18 @@ class ResearchAgent(BaseAgent):
             state=state_name,
         )
 
-    def _run_single_query(
-        self, query: str, category: str, today: str
-    ) -> list[RawArticle]:
-        """Calls Perplexity API for one query and converts search_results to RawArticles."""
+    def _run_single_query(self, query: str, category: str, today: str) -> list[RawArticle]:
+        """
+        Calls perplexity/sonar-pro via OpenRouter.
+        Response includes `citations` (list of URLs) and a synthesized answer.
+        """
         response = requests.post(
-            PERPLEXITY_API_URL,
-            headers={"Authorization": f"Bearer {self.perplexity_api_key}"},
+            f"{OPENROUTER_BASE_URL}/chat/completions",
+            headers={
+                "Authorization": f"Bearer {self.openrouter_api_key}",
+                "HTTP-Referer": "https://github.com/realtor-ai",
+                "X-Title": "Realtor AI Newsletter",
+            },
             json={
                 "model": PERPLEXITY_MODEL,
                 "messages": [{"role": "user", "content": f"{query} (today: {today})"}],
@@ -105,23 +105,34 @@ class ResearchAgent(BaseAgent):
                 output_tokens=usage.get("completion_tokens", 0),
             )
 
-        search_results: list[dict] = data.get("search_results", [])
+        # OpenRouter returns citations as a flat list of URLs
+        citations: list[str] = data.get("citations", [])
         articles: list[RawArticle] = []
-        for result in search_results:
-            url = result.get("url", "")
+
+        for url in citations:
             if not url:
                 continue
-            articles.append(
-                RawArticle(
-                    title=result.get("title", self._extract_title_from_url(url)),
-                    url=url,
-                    content=result.get("snippet", answer_text[:600]),
-                    published_date=result.get("date", ""),
-                    category=category,
-                    perplexity_answer=answer_text[:300],
-                    source="perplexity",
-                )
-            )
+            articles.append(RawArticle(
+                title=self._extract_title_from_url(url),
+                url=url,
+                content=answer_text[:600],
+                published_date=today,
+                category=category,
+                perplexity_answer=answer_text[:300],
+                source="perplexity-sonar",
+            ))
+
+        # If no citations returned, create one article from the answer itself
+        if not articles and answer_text:
+            articles.append(RawArticle(
+                title=f"{category} — {today}",
+                url=f"openrouter://perplexity/{category[:40]}",
+                content=answer_text[:800],
+                published_date=today,
+                category=category,
+                perplexity_answer=answer_text[:300],
+                source="perplexity-sonar",
+            ))
 
         return articles
 
@@ -132,11 +143,6 @@ class ResearchAgent(BaseAgent):
     def _build_queries_from_categories(
         self, categories: list[str], state_name: str
     ) -> list[tuple[str, str]]:
-        """
-        Builds English search queries from the Spanish category descriptions.
-        Returns list of (query, category) tuples — 2 queries per category.
-        City names are checked FIRST to prevent false matches against generic keys.
-        """
         city_query_map: dict[str, list[str]] = {
             city: [
                 f"{city} {state_name} real estate market 2026 prices inventory trends",
@@ -212,12 +218,7 @@ class ResearchAgent(BaseAgent):
 
         return queries
 
-    # -------------------------------------------------------------------------
-    # Helpers
-    # -------------------------------------------------------------------------
-
     def _extract_title_from_url(self, url: str) -> str:
-        """Derives a readable title from a URL path (best effort)."""
         try:
             path = url.split("://", 1)[1] if "://" in url else url
             parts = path.split("/", 1)

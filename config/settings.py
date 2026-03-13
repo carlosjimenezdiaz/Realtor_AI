@@ -10,9 +10,8 @@ load_dotenv()
 
 @dataclass(frozen=True)
 class Config:
-    # API Keys
+    # API Keys — all LLM calls go through OpenRouter
     openrouter_api_key: str
-    perplexity_api_key: str
     firecrawl_api_key: str
     telegram_bot_token: str
     telegram_chat_id: str
@@ -20,7 +19,7 @@ class Config:
     # State (fully driven by env vars via StateConfig)
     state_config: object
 
-    # Claude (via OpenRouter)
+    # Model config
     claude_model: str
     claude_max_tokens: int
 
@@ -39,7 +38,6 @@ def load_config() -> Config:
     """Load and validate all configuration from environment variables."""
     return Config(
         openrouter_api_key=_require("OPENROUTER_API_KEY"),
-        perplexity_api_key=_require("PERPLEXITY_API_KEY"),
         firecrawl_api_key=_require("FIRECRAWL_API_KEY"),
         telegram_bot_token=_require("TELEGRAM_BOT_TOKEN"),
         telegram_chat_id=_require("TELEGRAM_CHAT_ID"),
