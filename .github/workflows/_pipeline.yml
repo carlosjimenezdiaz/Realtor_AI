@@ -1,0 +1,63 @@
+name: _Pipeline (reusable)
+
+on:
+  workflow_call:
+    inputs:
+      state_name:
+        type: string
+        required: true
+      state_abbreviation:
+        type: string
+        required: true
+      cities:
+        type: string
+        required: true
+      timezone:
+        type: string
+        required: true
+      newsletter_name:
+        type: string
+        required: true
+      state_realtors_url:
+        type: string
+        required: false
+        default: ''
+    secrets:
+      openrouter_api_key:
+        required: true
+      firecrawl_api_key:
+        required: true
+      telegram_bot_token:
+        required: true
+      telegram_chat_id:
+        required: true
+
+jobs:
+  generate-report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Setup environment
+        uses: ./.github/actions/setup-env
+
+      - name: Run pipeline
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.openrouter_api_key }}
+          FIRECRAWL_API_KEY: ${{ secrets.firecrawl_api_key }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.telegram_bot_token }}
+          TELEGRAM_CHAT_ID: ${{ secrets.telegram_chat_id }}
+          STATE_NAME: ${{ inputs.state_name }}
+          STATE_ABBREVIATION: ${{ inputs.state_abbreviation }}
+          CITIES: ${{ inputs.cities }}
+          TIMEZONE: ${{ inputs.timezone }}
+          NEWSLETTER_NAME: ${{ inputs.newsletter_name }}
+          STATE_REALTORS_URL: ${{ inputs.state_realtors_url }}
+          DEDUP_HISTORY_FILE: data/seen_articles_${{ inputs.state_abbreviation }}.json
+        run: python main.py
+
+      - name: Persist deduplication state
+        if: always()
+        uses: ./.github/actions/persist-state
+        with:
+          state_abbreviation: ${{ inputs.state_abbreviation }}
