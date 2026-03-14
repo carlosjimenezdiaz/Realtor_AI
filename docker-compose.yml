@@ -20,19 +20,21 @@ services:
       - texas_costs:/app/costs
     restart: unless-stopped
 
+  california:
+    build: .
+    container_name: realtor_california
+    env_file: envs/california.env
+    volumes:
+      - california_data:/app/data
+      - california_logs:/app/logs
+      - california_costs:/app/costs
+    restart: unless-stopped
+
   # ─── Add a new state ──────────────────────────────────────────────────────
-  # 1. Copy envs/florida.env.example → envs/california.env and fill in values
-  # 2. Uncomment the block below and replace CA placeholders
-  #
-  # california:
-  #   build: .
-  #   container_name: realtor_california
-  #   env_file: envs/california.env
-  #   volumes:
-  #     - california_data:/app/data
-  #     - california_logs:/app/logs
-  #     - california_costs:/app/costs
-  #   restart: unless-stopped
+  # 1. cp envs/florida.env.example envs/newstate.env  → fill in values
+  # 2. Add a service block below following the pattern above
+  # 3. Add three volumes at the bottom: newstate_data, newstate_logs, newstate_costs
+  # 4. docker compose up -d --build newstate
 
 volumes:
   florida_data:
@@ -41,6 +43,6 @@ volumes:
   texas_data:
   texas_logs:
   texas_costs:
-  # california_data:
-  # california_logs:
-  # california_costs:
+  california_data:
+  california_logs:
+  california_costs:
