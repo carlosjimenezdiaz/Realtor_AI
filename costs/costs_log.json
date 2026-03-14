@@ -43,5 +43,44 @@
       "cost_usd": 0.006
     },
     "total_cost_usd": 0.990592
+  },
+  {
+    "date": "2026-03-13",
+    "run_id": "20260313_200110",
+    "claude": {
+      "by_agent": {
+        "analysis_agent": {
+          "model": "anthropic/claude-sonnet-4-5",
+          "input_tokens": 13967,
+          "output_tokens": 4004,
+          "cost_usd": 0.101961
+        },
+        "writing_agent": {
+          "model": "anthropic/claude-sonnet-4-5",
+          "input_tokens": 6517,
+          "output_tokens": 6510,
+          "cost_usd": 0.117201
+        },
+        "editorial_agent": {
+          "model": "anthropic/claude-sonnet-4-5",
+          "input_tokens": 6951,
+          "output_tokens": 6544,
+          "cost_usd": 0.119013
+        }
+      },
+      "total_cost_usd": 0.338175
+    },
+    "perplexity": {
+      "model": "perplexity/sonar-pro",
+      "total_requests": 26,
+      "total_input_tokens": 689,
+      "total_output_tokens": 15190,
+      "cost_usd": 0.359917
+    },
+    "firecrawl": {
+      "pages_scraped": 6,
+      "cost_usd": 0.006
+    },
+    "total_cost_usd": 0.704092
   }
 ]
