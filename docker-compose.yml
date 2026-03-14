@@ -1,0 +1,46 @@
+services:
+
+  florida:
+    build: .
+    container_name: realtor_florida
+    env_file: envs/florida.env
+    volumes:
+      - florida_data:/app/data
+      - florida_logs:/app/logs
+      - florida_costs:/app/costs
+    restart: unless-stopped
+
+  texas:
+    build: .
+    container_name: realtor_texas
+    env_file: envs/texas.env
+    volumes:
+      - texas_data:/app/data
+      - texas_logs:/app/logs
+      - texas_costs:/app/costs
+    restart: unless-stopped
+
+  # ─── Add a new state ──────────────────────────────────────────────────────
+  # 1. Copy envs/florida.env.example → envs/california.env and fill in values
+  # 2. Uncomment the block below and replace CA placeholders
+  #
+  # california:
+  #   build: .
+  #   container_name: realtor_california
+  #   env_file: envs/california.env
+  #   volumes:
+  #     - california_data:/app/data
+  #     - california_logs:/app/logs
+  #     - california_costs:/app/costs
+  #   restart: unless-stopped
+
+volumes:
+  florida_data:
+  florida_logs:
+  florida_costs:
+  texas_data:
+  texas_logs:
+  texas_costs:
+  # california_data:
+  # california_logs:
+  # california_costs:

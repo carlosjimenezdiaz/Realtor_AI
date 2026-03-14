@@ -1,0 +1,22 @@
+1. Primera vez:
+# Clonar repo
+git clone <repo> && cd Realtor_AI
+
+# Crear env files reales desde los ejemplos
+cp envs/florida.env.example envs/florida.env
+cp envs/texas.env.example   envs/texas.env
+# → Editar cada .env con las keys reales
+
+# Construir imagen y arrancar todos los estados
+docker compose up -d --build
+
+2. Añadir un estado nuevo:
+cp envs/florida.env.example envs/california.env
+# editar california.env con los valores de CA
+# descomentar el bloque california en docker-compose.yml
+docker compose up -d --build california
+
+3. Ver logs en tiempo real:
+docker compose logs -f florida
+# o los logs del pipeline dentro del volumen:
+docker exec realtor_florida tail -f /app/logs/cron.log
